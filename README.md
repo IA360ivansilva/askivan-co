@@ -10,6 +10,19 @@ Landing page estática (um arquivo) publicada via GitHub Pages no domínio **ask
 | `radar.json` | Fonte do Radar de Oportunidades — **é este arquivo que o Hermes atualiza** |
 | `CNAME` | `askivan.co` — não apagar, sem isso o domínio cai |
 | `edson-david-lower-payment.html` | Página neutra que substitui o link já enviado por SMS. Sem PII, `noindex` |
+| `terms/index.html` | Termos de Uso (EN/PT/ES) → `https://askivan.co/terms/` |
+| `privacy/index.html` | Política de Privacidade (EN/PT/ES) → `https://askivan.co/privacy/` |
+| `thank-you/index.html` | Pós-compra (`noindex`) → `https://askivan.co/thank-you/` |
+| `assets/doc.css` + `assets/doc.js` | Estilos e troca de idioma compartilhados pelas 3 páginas de documento |
+
+## Configurar na Whop
+
+- **URL de redirect pós-compra** → `https://askivan.co/thank-you/`
+- Nos Termos e na Política estão descritos: garantia de 7 dias, comissão de 50%,
+  processamento pela Whop e contato `ai360ivansilva@gmail.com` / +1 (954) 860-0537.
+- Se mudar a garantia, mude **nos 3 idiomas** em `terms/index.html`
+  (chaves `t.s6p` em EN/PT/ES).
+
 
 ## Conectar o checkout (Whop)
 

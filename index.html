@@ -157,6 +157,22 @@ h1{
 .video-slot:hover .play-ring{transform:scale(1.07);background:rgba(56,232,168,.17)}
 .video-ph strong{display:block;font-size:14.5px;font-weight:680;margin-bottom:5px}
 .video-ph small{display:block;font-size:12.5px;color:var(--muted);line-height:1.5}
+.video-slot.has-video{aspect-ratio:16/9}
+.video-slot.has-video video{object-fit:cover;display:block;background:#000}
+.video-play{
+  position:absolute;inset:0;z-index:3;display:grid;place-items:end center;border:0;padding:0 0 22px;cursor:pointer;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.55));color:#fff;font:inherit;
+  transition:opacity .25s var(--ease);
+}
+.video-play-pill{
+  display:inline-flex;align-items:center;gap:10px;padding:13px 20px 13px 14px;border-radius:999px;
+  background:var(--accent);color:var(--accent-ink);font-weight:750;font-size:15px;letter-spacing:-.01em;
+  box-shadow:0 14px 40px -12px rgba(56,232,168,.7);transition:transform .2s var(--ease);
+}
+.video-play-pill svg{flex:none}
+.video-play:hover .video-play-pill,.video-play:focus-visible .video-play-pill{transform:scale(1.05)}
+.video-play:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
+.video-slot.playing .video-play{opacity:0;pointer-events:none}
 .video-badge{
   position:absolute;top:12px;left:12px;z-index:2;
   padding:5px 10px;border-radius:7px;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
@@ -312,6 +328,8 @@ h2{font-size:clamp(24px,3.3vw,36px);line-height:1.15;letter-spacing:-.028em;font
   .nav a[data-nav]{display:none}
 }
 @media (max-width:600px){
+  .video-play{padding-bottom:16px}
+  .video-play-pill{padding:10px 16px 10px 11px;font-size:14px}
   .header-inner{height:58px;gap:10px}
   .brand{font-size:15px}
   .btn-header{display:none}
@@ -555,7 +573,8 @@ h2{font-size:clamp(24px,3.3vw,36px);line-height:1.15;letter-spacing:-.028em;font
 const CONFIG = {
   checkoutUrl:  "https://whop.com/checkout/plan_tkGHDGOIxB9V3",  // Whop checkout ($37)
   affiliateUrl: "https://whop.com/askivan/affiliates",        // Whop affiliate portal (50%)
-  heroVideo:    "",      // e.g. "assets/avatar.mp4"  or  "https://youtu.be/VIDEO_ID"
+  heroVideo:    "assets/videos/askivan-hero-avatar.mp4",   // mp4 path or "https://youtu.be/VIDEO_ID"
+  heroPoster:   "assets/videos/askivan-hero-poster.jpg",
   whatsapp:     "19548600537",
   radarPath:    "radar.json",
   defaultLang:  "en"     // used only if the browser language is not EN/PT/ES
@@ -575,6 +594,7 @@ const I18N = {
     "hero.videobadge":"Avatar preview",
     "hero.videotitle":"Your avatar presents this portal",
     "hero.videosub":"Video arriving soon — this slot is ready to receive it.",
+    "hero.watch":"Watch with sound",
     "prod.kicker":"Main product","prod.h2a":"Método Clone Digital",
     "prod.sub":"The complete path from zero to a digital clone that looks and sounds like you — and a production line that turns one idea into a week of content.",
     "prod.f1t":"Choosing your avatar","prod.f1d":"Which tool to use, when, and how to avoid the \"AI look\" that kills trust.",
@@ -615,6 +635,7 @@ const I18N = {
     "hero.videobadge":"Prévia do avatar",
     "hero.videotitle":"Seu avatar apresenta este portal",
     "hero.videosub":"O vídeo entra em breve — este espaço já está pronto para receber.",
+    "hero.watch":"Assistir com som",
     "prod.kicker":"Produto principal","prod.h2a":"Método Clone Digital",
     "prod.sub":"O caminho completo do zero até um clone digital que parece e soa como você — e uma linha de produção que transforma uma ideia em uma semana de conteúdo.",
     "prod.f1t":"Escolha do avatar","prod.f1d":"Qual ferramenta usar, quando, e como evitar o \"jeito de IA\" que destrói a confiança.",
@@ -655,6 +676,7 @@ const I18N = {
     "hero.videobadge":"Vista previa del avatar",
     "hero.videotitle":"Tu avatar presenta este portal",
     "hero.videosub":"El video llega pronto — este espacio ya está listo para recibirlo.",
+    "hero.watch":"Ver con sonido",
     "prod.kicker":"Producto principal","prod.h2a":"Método Clone Digital",
     "prod.sub":"El camino completo desde cero hasta un clon digital que se ve y suena como tú — y una línea de producción que convierte una idea en una semana de contenido.",
     "prod.f1t":"Elegir tu avatar","prod.f1d":"Qué herramienta usar, cuándo, y cómo evitar el \"aspecto de IA\" que destruye la confianza.",
@@ -843,14 +865,30 @@ function mountHeroVideo(){
     f.loading = "lazy";
     slot.appendChild(f);
   } else {
+    slot.classList.add("has-video");
     const v = document.createElement("video");
     v.src = src;
-    v.controls = true;
+    v.controls = false;            // native controls appear on first play (keeps the poster clean)
     v.playsInline = true;
     v.preload = "metadata";
     v.setAttribute("playsinline","");
-    if(slot.dataset.poster) v.poster = slot.dataset.poster;
+    v.setAttribute("aria-label","AskIvan — AI avatar");
+    const poster = CONFIG.heroPoster || slot.dataset.poster;
+    if(poster) v.poster = poster;
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "video-play";
+    btn.innerHTML = '<span class="video-play-pill"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="currentColor" opacity=".14"/><path d="M9.5 7.6v8.8L16.8 12z" fill="currentColor"/></svg><span data-t="hero.watch">' + esc(t("hero.watch")) + '</span></span>';
+    btn.addEventListener("click", ()=>{
+      v.muted = false;
+      v.volume = 1;
+      const p = v.play();
+      if(p && p.catch) p.catch(()=>{});
+    });
+    v.addEventListener("play", ()=>{ v.controls = true; slot.classList.add("playing"); });
+    v.addEventListener("ended", ()=> slot.classList.remove("playing"));
     slot.appendChild(v);
+    slot.appendChild(btn);
   }
 }
 

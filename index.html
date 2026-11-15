@@ -24,7 +24,7 @@
   --text:#f2f4f8;
   --muted:#9aa3b2;
   --accent:#38e8a8;
-  --accent-ink:#04120c;
+  --accent-ink:#090D16;
   --accent-2:#6c8cff;
   --radius:18px;
   --max:1120px;
@@ -95,9 +95,11 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 .btn:active{transform:translateY(0)}
 .btn-primary{
   background:linear-gradient(150deg,var(--accent),#22cf95);
-  color:var(--accent-ink);
+  color:var(--accent-ink);font-weight:800;
   box-shadow:0 10px 34px -12px rgba(56,232,168,.65);
 }
+/* header CTA lives inside .nav: keep dark high-contrast text + green on hover */
+.nav a.btn-primary,.nav a.btn-primary:hover{color:var(--accent-ink);font-weight:800;background:linear-gradient(150deg,var(--accent),#22cf95)}
 .btn-primary:hover{box-shadow:0 16px 42px -12px rgba(56,232,168,.8)}
 .btn-ghost{
   background:var(--surface);border:1px solid var(--line-2);color:var(--text);
@@ -166,7 +168,7 @@ h1{
 }
 .video-play-pill{
   display:inline-flex;align-items:center;gap:10px;padding:13px 20px 13px 14px;border-radius:999px;
-  background:var(--accent);color:var(--accent-ink);font-weight:750;font-size:15px;letter-spacing:-.01em;
+  background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:15px;letter-spacing:-.01em;
   box-shadow:0 14px 40px -12px rgba(56,232,168,.7);transition:transform .2s var(--ease);
 }
 .video-play-pill svg{flex:none}

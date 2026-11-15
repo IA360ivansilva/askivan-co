@@ -2,7 +2,7 @@
 :root{
   --bg:#08090c; --surface:rgba(255,255,255,.035); --surface-2:rgba(255,255,255,.06);
   --line:rgba(255,255,255,.09); --line-2:rgba(255,255,255,.16);
-  --text:#f2f4f8; --muted:#9aa3b2; --accent:#38e8a8; --accent-ink:#04120c;
+  --text:#f2f4f8; --muted:#9aa3b2; --accent:#38e8a8; --accent-ink:#090D16;
   --radius:18px; --ease:cubic-bezier(.22,.61,.36,1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -83,7 +83,7 @@ a.inline:hover{color:#7df0c6}
   text-align:center;line-height:1.2;
 }
 .btn:hover{transform:translateY(-2px)}
-.btn-primary{background:linear-gradient(150deg,var(--accent),#22cf95);color:var(--accent-ink);box-shadow:0 10px 34px -12px rgba(56,232,168,.6)}
+.btn-primary{background:linear-gradient(150deg,var(--accent),#22cf95);color:var(--accent-ink);font-weight:800;box-shadow:0 10px 34px -12px rgba(56,232,168,.6)}
 .btn-ghost{background:var(--surface);border:1px solid var(--line-2);color:var(--text)}
 .btn-ghost:hover{background:var(--surface-2)}
 .btn-block{width:100%}

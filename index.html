@@ -455,6 +455,12 @@ h2{font-size:clamp(24px,3.3vw,36px);line-height:1.15;letter-spacing:-.028em;font
             <span data-t="prod.cta">Buy now — $37</span>
           </button>
           <p class="plan-note" data-t="prod.note">Secure checkout. Access released immediately after payment.</p>
+          <p class="plan-note" style="margin-top:8px">
+            <span data-t="prod.termsA">By buying you agree to the</span>
+            <a href="/terms/" data-t="nav.terms" style="color:var(--accent)">Terms of Use</a>
+            <span data-t="prod.termsB">and the</span>
+            <a href="/privacy/" data-t="nav.privacy" style="color:var(--accent)">Privacy Policy</a>.
+          </p>
         </div>
       </div>
     </div>
@@ -518,6 +524,8 @@ h2{font-size:clamp(24px,3.3vw,36px);line-height:1.15;letter-spacing:-.028em;font
         <a href="#product" data-t="nav.product">Product</a>
         <a href="#affiliate" data-t="nav.affiliate">Affiliate</a>
         <a href="#radar" data-t="nav.radar">Radar</a>
+        <a href="/terms/" data-t="nav.terms">Terms of Use</a>
+        <a href="/privacy/" data-t="nav.privacy">Privacy Policy</a>
         <a href="https://wa.me/19548600537" target="_blank" rel="noopener">WhatsApp</a>
         <a href="mailto:ai360ivansilva@gmail.com">Email</a>
       </div>
@@ -558,7 +566,7 @@ const CONFIG = {
    ============================================================ */
 const I18N = {
   en: {
-    "nav.product":"Product","nav.affiliate":"Affiliate","nav.radar":"Radar","nav.buy":"Get it — $37",
+    "nav.product":"Product","nav.affiliate":"Affiliate","nav.radar":"Radar","nav.buy":"Get it — $37","nav.terms":"Terms of Use","nav.privacy":"Privacy Policy",
     "hero.eyebrow":"AI Avatar System",
     "hero.h1a":"Master","hero.h1b":"AI Avatar Creation","hero.h1c":"— and discover the best digital opportunities on the market.",
     "hero.lede":"Build a photorealistic digital clone of yourself — face, voice and presence — and use it to sell, teach and scale. No camera crew. No studio.",
@@ -577,7 +585,7 @@ const I18N = {
     "prod.plan":"Clone Digital — full access","prod.once":"one-time",
     "prod.desc":"Everything you need to build, produce and publish with your own AI avatar.",
     "prod.p1":"The full Método Clone Digital","prod.p2":"Step-by-step tool stack","prod.p3":"Production templates","prod.p4":"Lifetime updates","prod.p5":"Affiliate access: 50% per sale",
-    "prod.cta":"Buy now — $37","prod.note":"Secure checkout. Access released immediately after payment.",
+    "prod.cta":"Buy now — $37","prod.note":"Secure checkout. Access released immediately after payment.","prod.termsA":"By buying you agree to the","prod.termsB":"and the",
     "aff.kicker":"Affiliate program","aff.h2":"Recommend it. Keep half.",
     "aff.sub":"Every sale you send earns 50% commission. Paid automatically, tracked for you — no inventory, no support tickets.",
     "aff.s1t":"Get your link","aff.s1d":"— one click after you buy.",
@@ -598,7 +606,7 @@ const I18N = {
   },
 
   pt: {
-    "nav.product":"Produto","nav.affiliate":"Afiliados","nav.radar":"Radar","nav.buy":"Quero — $37",
+    "nav.product":"Produto","nav.affiliate":"Afiliados","nav.radar":"Radar","nav.buy":"Quero — $37","nav.terms":"Termos de Uso","nav.privacy":"Política de Privacidade",
     "hero.eyebrow":"Sistema de Avatar IA",
     "hero.h1a":"Domine a","hero.h1b":"Criação de Avatares com IA","hero.h1c":"e descubra as melhores oportunidades digitais do mercado.",
     "hero.lede":"Construa um clone digital seu, fotorrealista — rosto, voz e presença — e use para vender, ensinar e escalar. Sem equipe de filmagem. Sem estúdio.",
@@ -617,7 +625,7 @@ const I18N = {
     "prod.plan":"Clone Digital — acesso completo","prod.once":"pagamento único",
     "prod.desc":"Tudo o que você precisa para construir, produzir e publicar com o seu próprio avatar de IA.",
     "prod.p1":"O Método Clone Digital completo","prod.p2":"Stack de ferramentas passo a passo","prod.p3":"Templates de produção","prod.p4":"Atualizações incluídas","prod.p5":"Acesso ao programa de afiliados: 50% por venda",
-    "prod.cta":"Comprar agora — $37","prod.note":"Pagamento seguro. Acesso liberado logo após a confirmação.",
+    "prod.cta":"Comprar agora — $37","prod.note":"Pagamento seguro. Acesso liberado logo após a confirmação.","prod.termsA":"Ao comprar, você concorda com os","prod.termsB":"e com a",
     "aff.kicker":"Programa de afiliados","aff.h2":"Indique. Fique com metade.",
     "aff.sub":"Cada venda que você traz paga 50% de comissão. Pago automaticamente, com rastreamento — sem estoque, sem suporte.",
     "aff.s1t":"Pegue seu link","aff.s1d":"— um clique depois da sua compra.",
@@ -638,7 +646,7 @@ const I18N = {
   },
 
   es: {
-    "nav.product":"Producto","nav.affiliate":"Afiliados","nav.radar":"Radar","nav.buy":"Quiero — $37",
+    "nav.product":"Producto","nav.affiliate":"Afiliados","nav.radar":"Radar","nav.buy":"Quiero — $37","nav.terms":"Términos de Uso","nav.privacy":"Política de Privacidad",
     "hero.eyebrow":"Sistema de Avatar IA",
     "hero.h1a":"Domina la","hero.h1b":"Creación de Avatares con IA","hero.h1c":"y descubre las mejores oportunidades digitales del mercado.",
     "hero.lede":"Construye un clon digital tuyo, fotorrealista — rostro, voz y presencia — y úsalo para vender, enseñar y escalar. Sin equipo de filmación. Sin estudio.",
@@ -657,7 +665,7 @@ const I18N = {
     "prod.plan":"Clone Digital — acceso completo","prod.once":"pago único",
     "prod.desc":"Todo lo que necesitas para construir, producir y publicar con tu propio avatar de IA.",
     "prod.p1":"El Método Clone Digital completo","prod.p2":"Stack de herramientas paso a paso","prod.p3":"Plantillas de producción","prod.p4":"Actualizaciones incluidas","prod.p5":"Acceso al programa de afiliados: 50% por venta",
-    "prod.cta":"Comprar ahora — $37","prod.note":"Pago seguro. Acceso liberado justo después del pago.",
+    "prod.cta":"Comprar ahora — $37","prod.note":"Pago seguro. Acceso liberado justo después del pago.","prod.termsA":"Al comprar aceptas los","prod.termsB":"y la",
     "aff.kicker":"Programa de afiliados","aff.h2":"Recomiéndalo. Quédate con la mitad.",
     "aff.sub":"Cada venta que traigas gana 50% de comisión. Pagado automáticamente y con seguimiento — sin inventario, sin soporte.",
     "aff.s1t":"Obtén tu enlace","aff.s1d":"— un clic después de tu compra.",

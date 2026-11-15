@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AskIvan — AI Avatar System | Domine Avatares com IA</title>
+<meta name="description" content="Master AI avatar creation and discover the best digital opportunities on the market. Método Clone Digital + weekly opportunity radar.">
+<meta name="theme-color" content="#08090c">
+<script>document.documentElement.classList.add("js")</script>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://askivan.co/">
+<meta property="og:title" content="AskIvan — AI Avatar System">
+<meta property="og:description" content="Master AI avatar creation — and discover the best digital opportunities on the market.">
+<link rel="canonical" href="https://askivan.co/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b0d11'/><text x='50' y='68' font-size='52' font-family='system-ui,sans-serif' font-weight='700' fill='%2338e8a8' text-anchor='middle'>A</text></svg>">
+<style>
+:root{
+  --bg:#08090c;
+  --bg-2:#0d0f14;
+  --surface:rgba(255,255,255,.035);
+  --surface-2:rgba(255,255,255,.06);
+  --line:rgba(255,255,255,.09);
+  --line-2:rgba(255,255,255,.16);
+  --text:#f2f4f8;
+  --muted:#9aa3b2;
+  --accent:#38e8a8;
+  --accent-ink:#04120c;
+  --accent-2:#6c8cff;
+  --radius:18px;
+  --max:1120px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+  line-height:1.6;letter-spacing:-.011em;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(60rem 40rem at 78% -12%,rgba(56,232,168,.10),transparent 60%),
+    radial-gradient(50rem 36rem at 8% 4%,rgba(108,140,255,.09),transparent 62%);
+}
+img,video{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 22px;position:relative;z-index:1}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---------- header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(18px) saturate(150%);
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
+  background:rgba(8,9,12,.72);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{display:flex;align-items:center;gap:14px;height:64px}
+.brand{display:flex;align-items:center;gap:9px;font-weight:750;font-size:16.5px;letter-spacing:-.02em;flex-shrink:0}
+.brand-mark{
+  width:27px;height:27px;border-radius:9px;display:grid;place-items:center;
+  background:linear-gradient(150deg,var(--accent),#19b98a);
+  color:var(--accent-ink);font-size:14px;font-weight:800;
+}
+.nav{display:flex;gap:4px;margin-left:auto;align-items:center}
+.nav a{
+  padding:8px 12px;border-radius:9px;font-size:14px;color:var(--muted);
+  transition:color .18s var(--ease),background .18s var(--ease);white-space:nowrap;
+}
+.nav a:hover{color:var(--text);background:var(--surface)}
+.lang{
+  display:flex;gap:2px;padding:3px;border-radius:10px;
+  background:var(--surface);border:1px solid var(--line);flex-shrink:0;
+}
+.lang button{
+  padding:5px 9px;border-radius:7px;font-size:12px;font-weight:700;letter-spacing:.04em;
+  color:var(--muted);transition:all .18s var(--ease);
+}
+.lang button:hover{color:var(--text)}
+.lang button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:14px 26px;border-radius:13px;font-weight:680;font-size:15px;
+  transition:transform .18s var(--ease),box-shadow .22s var(--ease),background .18s var(--ease),border-color .18s var(--ease);
+  text-align:center;line-height:1.2;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn-primary{
+  background:linear-gradient(150deg,var(--accent),#22cf95);
+  color:var(--accent-ink);
+  box-shadow:0 10px 34px -12px rgba(56,232,168,.65);
+}
+.btn-primary:hover{box-shadow:0 16px 42px -12px rgba(56,232,168,.8)}
+.btn-ghost{
+  background:var(--surface);border:1px solid var(--line-2);color:var(--text);
+}
+.btn-ghost:hover{background:var(--surface-2);border-color:rgba(255,255,255,.28)}
+.btn-lg{padding:16px 32px;font-size:15.5px;border-radius:14px}
+.btn-block{width:100%}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(38px,6vw,76px) 0 clamp(46px,6vw,80px)}
+.hero-grid{
+  display:grid;grid-template-columns:1.05fr .95fr;
+  gap:clamp(28px,4.5vw,58px);align-items:center;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 13px 6px 9px;border-radius:999px;
+  background:var(--surface);border:1px solid var(--line);
+  font-size:12px;font-weight:650;letter-spacing:.055em;text-transform:uppercase;color:var(--muted);
+  margin-bottom:20px;
+}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(56,232,168,.18)}
+h1{
+  font-size:clamp(30px,4.6vw,49px);line-height:1.09;letter-spacing:-.033em;font-weight:780;
+  margin-bottom:18px;text-wrap:balance;
+}
+.grad{
+  background:linear-gradient(100deg,var(--accent) 12%,#7df0c6 48%,var(--accent-2) 96%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.lede{font-size:clamp(15px,1.55vw,17.5px);color:var(--muted);max-width:36em;margin-bottom:28px;text-wrap:pretty}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
+.micro{display:flex;flex-wrap:wrap;gap:7px 18px;font-size:12.5px;color:var(--muted)}
+.micro span{display:inline-flex;align-items:center;gap:6px}
+.micro svg{flex-shrink:0;opacity:.85}
+
+/* video slot */
+.video-slot{
+  position:relative;border-radius:var(--radius);overflow:hidden;
+  border:1px solid var(--line);background:linear-gradient(165deg,#11141b,#0a0c11 72%);
+  aspect-ratio:16/10;
+  box-shadow:0 28px 70px -30px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.02) inset;
+}
+.video-slot video,.video-slot iframe{width:100%;height:100%;object-fit:cover;border:0}
+.video-ph{
+  position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:26px;
+  background:
+    radial-gradient(70% 70% at 50% 42%,rgba(56,232,168,.13),transparent 70%),
+    repeating-linear-gradient(115deg,rgba(255,255,255,.014) 0 2px,transparent 2px 7px);
+}
+.video-ph-inner{max-width:270px}
+.play-ring{
+  width:64px;height:64px;border-radius:50%;display:grid;place-items:center;margin:0 auto 15px;
+  background:rgba(56,232,168,.11);border:1px solid rgba(56,232,168,.42);color:var(--accent);
+  transition:transform .25s var(--ease),background .25s var(--ease);
+}
+.video-slot:hover .play-ring{transform:scale(1.07);background:rgba(56,232,168,.17)}
+.video-ph strong{display:block;font-size:14.5px;font-weight:680;margin-bottom:5px}
+.video-ph small{display:block;font-size:12.5px;color:var(--muted);line-height:1.5}
+.video-badge{
+  position:absolute;top:12px;left:12px;z-index:2;
+  padding:5px 10px;border-radius:7px;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  background:rgba(8,9,12,.82);border:1px solid var(--line-2);color:var(--muted);
+  backdrop-filter:blur(8px);
+}
+
+/* ---------- sections ---------- */
+section{position:relative;z-index:1}
+.sec{padding:clamp(50px,7vw,88px) 0;border-top:1px solid var(--line)}
+.sec-head{max-width:640px;margin-bottom:clamp(30px,4vw,46px)}
+.kicker{
+  font-size:11.5px;font-weight:720;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:12px;display:block;
+}
+h2{font-size:clamp(24px,3.3vw,36px);line-height:1.15;letter-spacing:-.028em;font-weight:760;margin-bottom:12px;text-wrap:balance}
+.sec-head p{color:var(--muted);font-size:clamp(14.5px,1.4vw,16px);text-wrap:pretty}
+
+/* product */
+.product-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(24px,3.4vw,46px);align-items:start}
+.features{list-style:none;display:grid;gap:2px}
+.features li{display:flex;gap:13px;padding:13px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.features li:last-child{border-bottom:0}
+.check{
+  width:21px;height:21px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;margin-top:2px;
+  background:rgba(56,232,168,.13);border:1px solid rgba(56,232,168,.3);color:var(--accent);
+}
+.features b{display:block;font-size:14.5px;font-weight:660;margin-bottom:1px}
+.features span{font-size:13.5px;color:var(--muted);line-height:1.5}
+.price-card{
+  border-radius:var(--radius);padding:26px;position:relative;overflow:hidden;
+  background:linear-gradient(168deg,rgba(255,255,255,.07),rgba(255,255,255,.02) 55%);
+  border:1px solid var(--line-2);
+  box-shadow:0 30px 70px -34px rgba(0,0,0,.9);
+}
+.price-card::before{
+  content:"";position:absolute;inset:-1px -1px auto;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(56,232,168,.75),transparent);
+}
+.price-tag{display:flex;align-items:baseline;gap:9px;margin:6px 0 4px}
+.price-tag .cur{font-size:20px;font-weight:600;color:var(--muted)}
+.price-tag .amt{font-size:clamp(42px,5.4vw,54px);font-weight:780;letter-spacing:-.045em;line-height:1}
+.price-tag .per{font-size:12.5px;color:var(--muted);font-weight:500}
+.plan-name{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.plan-desc{color:var(--muted);font-size:13.5px;margin:10px 0 20px;line-height:1.55}
+.plan-list{list-style:none;display:grid;gap:9px;margin:0 0 22px;font-size:13.5px}
+.plan-list li{display:flex;gap:9px;align-items:flex-start;color:#cfd6e0}
+.plan-list svg{color:var(--accent);flex-shrink:0;margin-top:3px}
+.plan-note{font-size:11.5px;color:#7d8694;text-align:center;margin-top:13px;line-height:1.55}
+.price-card hr{border:0;border-top:1px solid var(--line);margin:20px 0}
+
+/* affiliate */
+.aff{
+  border-radius:var(--radius);padding:clamp(24px,3.6vw,40px);position:relative;overflow:hidden;
+  background:
+    radial-gradient(90% 130% at 100% 0%,rgba(108,140,255,.15),transparent 58%),
+    linear-gradient(150deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
+  border:1px solid var(--line-2);
+}
+.aff-grid{display:grid;grid-template-columns:1fr auto;gap:clamp(22px,3.4vw,44px);align-items:center}
+.aff-pct{text-align:center;flex-shrink:0}
+.aff-pct .n{
+  font-size:clamp(52px,7.4vw,76px);font-weight:800;line-height:.92;letter-spacing:-.05em;
+  background:linear-gradient(160deg,var(--accent),var(--accent-2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.aff-pct small{display:block;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:6px;font-weight:650}
+.steps{list-style:none;display:grid;gap:14px;margin:18px 0 0}
+.steps li{display:flex;gap:12px;align-items:flex-start;font-size:13.8px}
+.step-n{
+  width:23px;height:23px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;
+  font-size:11.5px;font-weight:750;background:var(--surface-2);border:1px solid var(--line-2);color:var(--text);margin-top:1px;
+}
+.steps b{font-weight:660}
+.steps span{color:var(--muted)}
+
+/* radar */
+.radar-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:clamp(24px,3.4vw,36px)}
+.radar-meta{
+  display:inline-flex;align-items:center;gap:7px;font-size:11.5px;color:var(--muted);
+  padding:5px 11px;border-radius:999px;background:var(--surface);border:1px solid var(--line);white-space:nowrap;
+}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2.4s var(--ease) infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(56,232,168,.5)}50%{opacity:.55;box-shadow:0 0 0 5px rgba(56,232,168,0)}}
+.radar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{
+  display:flex;flex-direction:column;border-radius:16px;padding:22px;
+  background:linear-gradient(168deg,rgba(255,255,255,.05),rgba(255,255,255,.012));
+  border:1px solid var(--line);
+  transition:transform .22s var(--ease),border-color .22s var(--ease),background .22s var(--ease),box-shadow .22s var(--ease);
+  position:relative;overflow:hidden;
+}
+.card:hover{transform:translateY(-3px);border-color:rgba(56,232,168,.4);background:linear-gradient(168deg,rgba(56,232,168,.06),rgba(255,255,255,.02));box-shadow:0 22px 44px -26px rgba(0,0,0,.9)}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.tag{
+  font-size:10.5px;font-weight:720;letter-spacing:.09em;text-transform:uppercase;
+  padding:4px 9px;border-radius:6px;background:rgba(56,232,168,.11);color:var(--accent);border:1px solid rgba(56,232,168,.24);
+}
+.rank{font-size:11px;color:#69717f;font-weight:700;letter-spacing:.05em}
+.card h3{font-size:16.5px;font-weight:700;letter-spacing:-.018em;margin-bottom:7px;line-height:1.3}
+.card p{font-size:13.4px;color:var(--muted);line-height:1.58;margin-bottom:16px;flex:1}
+.card-link{display:inline-flex;align-items:center;gap:6px;font-size:13.2px;font-weight:660;color:var(--accent);margin-top:auto}
+.card-link svg{transition:transform .2s var(--ease)}
+.card:hover .card-link svg{transform:translate(3px,-3px)}
+.card-loading{opacity:.5}
+
+/* footer */
+.site-footer{border-top:1px solid var(--line);padding:38px 0 46px;margin-top:20px}
+.foot-grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-start}
+.foot-brand{font-weight:750;font-size:15.5px;display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.foot-note{font-size:12.5px;color:var(--muted);max-width:30ch;line-height:1.6}
+.foot-links{display:flex;flex-wrap:wrap;gap:9px 22px;font-size:13px}
+.foot-links a{color:var(--muted);transition:color .18s var(--ease)}
+.foot-links a:hover{color:var(--accent)}
+.legal{font-size:11.5px;color:#666e7b;margin-top:28px;padding-top:20px;border-top:1px solid var(--line);line-height:1.6}
+
+/* modal */
+.modal{
+  position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:20px;
+  background:rgba(4,5,7,.78);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+}
+.modal[open]{display:grid}
+.modal-box{
+  width:100%;max-width:440px;border-radius:20px;padding:30px;
+  background:linear-gradient(168deg,#141821,#0b0d12);
+  border:1px solid var(--line-2);box-shadow:0 40px 90px -30px #000;
+  position:relative;animation:pop .24s var(--ease);
+}
+@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.modal-x{position:absolute;top:13px;right:13px;width:31px;height:31px;border-radius:9px;display:grid;place-items:center;color:var(--muted);background:var(--surface)}
+.modal-x:hover{color:var(--text);background:var(--surface-2)}
+.modal-box h3{font-size:20px;font-weight:730;letter-spacing:-.02em;margin-bottom:9px;padding-right:30px}
+.modal-box p{font-size:14px;color:var(--muted);line-height:1.62;margin-bottom:22px}
+.modal-tag{
+  display:inline-block;font-size:10.5px;font-weight:720;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);background:rgba(56,232,168,.1);border:1px solid rgba(56,232,168,.25);
+  padding:4px 9px;border-radius:6px;margin-bottom:13px;
+}
+
+/* reveal — content is visible by default; only the .js class hides it first,
+   so a failed script can never leave the page blank. */
+.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .hero-grid,.product-grid{grid-template-columns:1fr}
+  .hero-grid{gap:32px}
+  .video-slot{order:-1;aspect-ratio:16/11}
+  .radar-grid{grid-template-columns:1fr}
+  .aff-grid{grid-template-columns:1fr;text-align:left}
+  .aff-pct{text-align:left}
+  .nav a[data-nav]{display:none}
+}
+@media (max-width:600px){
+  .header-inner{height:58px;gap:10px}
+  .brand{font-size:15px}
+  .btn-header{display:none}
+  .lang button{padding:8px 12px;min-height:40px;min-width:40px}
+  .wrap{padding:0 17px}
+  .hero-cta{flex-direction:column}
+  .hero-cta .btn{width:100%}
+  .price-card{padding:22px}
+  .modal-box{padding:24px}
+  .video-slot{aspect-ratio:4/3}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="#top" class="brand" aria-label="AskIvan">
+      <span class="brand-mark" aria-hidden="true">A</span>
+      <span>AskIvan</span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#product" data-nav data-t="nav.product">Product</a>
+      <a href="#affiliate" data-nav data-t="nav.affiliate">Affiliate</a>
+      <a href="#radar" data-nav data-t="nav.radar">Radar</a>
+      <a href="#buy" class="btn btn-primary btn-header" style="padding:9px 17px;font-size:13.5px;border-radius:10px;margin-left:6px">
+        <span data-t="nav.buy">Get it — $37</span>
+      </a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="pt" aria-pressed="false">PT</button>
+        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-t="hero.eyebrow">AI Avatar System</span></span>
+        <h1><span data-t="hero.h1a">Master</span> <span class="grad" data-t="hero.h1b">AI Avatar Creation</span> <span data-t="hero.h1c">— and discover the best digital opportunities on the market.</span></h1>
+        <p class="lede" data-t="hero.lede">Build a photorealistic digital clone of yourself — face, voice and presence — and use it to sell, teach and scale. No camera crew. No studio.</p>
+        <div class="hero-cta">
+          <a href="#buy" class="btn btn-primary btn-lg">
+            <span data-t="hero.cta1">Get the Method — $37</span>
+          </a>
+          <a href="#affiliate" class="btn btn-ghost btn-lg">
+            <span data-t="hero.cta2">Earn 50% as an affiliate</span>
+          </a>
+        </div>
+        <div class="micro">
+          <span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-t="hero.m1">Instant access</span>
+          </span>
+          <span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-t="hero.m2">Lifetime updates</span>
+          </span>
+          <span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span data-t="hero.m3">English · Portuguese · Spanish</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- HERO VIDEO SLOT — set CONFIG.heroVideo below (mp4 URL or video ID) and it renders automatically -->
+      <div class="video-slot" id="heroVideoSlot">
+        <span class="video-badge" data-t="hero.videobadge">Avatar preview</span>
+        <div class="video-ph">
+          <div class="video-ph-inner">
+            <div class="play-ring" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72L19 12z"/></svg>
+            </div>
+            <strong data-t="hero.videotitle">Your avatar presents this portal</strong>
+            <small data-t="hero.videosub">Video arriving soon — this slot is ready to receive it.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRODUCT ============ -->
+  <section class="sec" id="product">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="kicker" data-t="prod.kicker">Main product</span>
+        <h2><span data-t="prod.h2a">Método Clone Digital</span> <span style="color:var(--muted);font-weight:600">/ AI Avatar System</span></h2>
+        <p data-t="prod.sub">The complete path from zero to a digital clone that looks and sounds like you — and a production line that turns one idea into a week of content.</p>
+      </div>
+
+      <div class="product-grid">
+        <ul class="features reveal">
+          <li>
+            <span class="check" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <div><b data-t="prod.f1t">Choosing your avatar</b><span data-t="prod.f1d">Which tool to use, when, and how to avoid the "AI look" that kills trust.</span></div>
+          </li>
+          <li>
+            <span class="check" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <div><b data-t="prod.f2t">Voice cloning that sounds human</b><span data-t="prod.f2d">Recording, cleaning and cloning your voice so it stops sounding robotic.</span></div>
+          </li>
+          <li>
+            <span class="check" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <div><b data-t="prod.f3t">Lip-sync and presence</b><span data-t="prod.f3d">Getting the mouth and the eyes right — the two things viewers notice instantly.</span></div>
+          </li>
+          <li>
+            <span class="check" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <div><b data-t="prod.f4t">From script to finished video</b><span data-t="prod.f4d">A repeatable production flow — one recording session feeds dozens of videos.</span></div>
+          </li>
+          <li>
+            <span class="check" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <div><b data-t="prod.f5t">Turning content into money</b><span data-t="prod.f5d">Where an avatar actually pays: offers, funnels, ads and client work.</span></div>
+          </li>
+        </ul>
+
+        <div class="price-card reveal" id="buy">
+          <span class="plan-name" data-t="prod.plan">Clone Digital — full access</span>
+          <div class="price-tag">
+            <span class="cur">$</span><span class="amt">37</span>
+            <span class="per" data-t="prod.once">one-time</span>
+          </div>
+          <p class="plan-desc" data-t="prod.desc">Everything you need to build, produce and publish with your own AI avatar.</p>
+          <hr>
+          <ul class="plan-list">
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-t="prod.p1">The full Método Clone Digital</span></li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-t="prod.p2">Step-by-step tool stack</span></li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-t="prod.p3">Production templates</span></li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-t="prod.p4">Lifetime updates</span></li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-t="prod.p5">Affiliate access: 50% per sale</span></li>
+          </ul>
+          <button type="button" class="btn btn-primary btn-block btn-lg" id="buyBtn" data-checkout="whop">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            <span data-t="prod.cta">Buy now — $37</span>
+          </button>
+          <p class="plan-note" data-t="prod.note">Secure checkout. Access released immediately after payment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AFFILIATE ============ -->
+  <section class="sec" id="affiliate">
+    <div class="wrap">
+      <div class="aff reveal">
+        <div class="aff-grid">
+          <div>
+            <span class="kicker" data-t="aff.kicker">Affiliate program</span>
+            <h2 style="margin-bottom:10px" data-t="aff.h2">Recommend it. Keep half.</h2>
+            <p style="color:var(--muted);font-size:14.5px;max-width:40ch" data-t="aff.sub">Every sale you send earns 50% commission. Paid automatically, tracked for you — no inventory, no support tickets.</p>
+            <ul class="steps">
+              <li><span class="step-n">1</span><div><b data-t="aff.s1t">Get your link</b> <span data-t="aff.s1d">— one click after you buy.</span></div></li>
+              <li><span class="step-n">2</span><div><b data-t="aff.s2t">Share it</b> <span data-t="aff.s2d">— your audience, your socials, your clients.</span></div></li>
+              <li><span class="step-n">3</span><div><b data-t="aff.s3t">Get paid 50%</b> <span data-t="aff.s3d">— automatically on every completed sale.</span></div></li>
+            </ul>
+          </div>
+          <div class="aff-pct">
+            <div class="n">50%</div>
+            <small data-t="aff.pct">commission</small>
+            <button type="button" class="btn btn-ghost" id="affBtn" style="margin-top:18px;width:100%" data-affiliate="pending">
+              <span data-t="aff.cta">Join as affiliate</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RADAR ============ -->
+  <section class="sec" id="radar">
+    <div class="wrap">
+      <div class="radar-head">
+        <div class="sec-head" style="margin-bottom:0">
+          <span class="kicker" data-t="radar.kicker">Opportunity radar</span>
+          <h2 data-t="radar.h2">The 3 digital tools worth testing this week</h2>
+          <p data-t="radar.sub">Hand-picked every week. Real tools, tested before they land here — no filler, no hype.</p>
+        </div>
+        <span class="radar-meta">
+          <span class="pulse" aria-hidden="true"></span>
+          <span data-t="radar.updated">Updated weekly by Hermes</span>
+        </span>
+      </div>
+      <div class="radar-grid" id="radarGrid" aria-live="polite"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><span class="brand-mark" aria-hidden="true">A</span> AskIvan</div>
+        <p class="foot-note" data-t="foot.note">AI avatars, automation and digital opportunity — built in South Florida.</p>
+      </div>
+      <div class="foot-links">
+        <a href="#product" data-t="nav.product">Product</a>
+        <a href="#affiliate" data-t="nav.affiliate">Affiliate</a>
+        <a href="#radar" data-t="nav.radar">Radar</a>
+        <a href="https://wa.me/19548600537" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:ai360ivansilva@gmail.com">Email</a>
+      </div>
+    </div>
+    <p class="legal" data-t="foot.legal">© 2026 AskIvan. All rights reserved. Results depend on your own execution. This site is not affiliated with or endorsed by any third-party tool mentioned in the radar.</p>
+  </div>
+</footer>
+
+<!-- ============ MODAL (shown while checkout is being connected) ============ -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <button type="button" class="modal-x" id="modalX" aria-label="Close">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <span class="modal-tag" id="modalTag">Checkout</span>
+    <h3 id="modalTitle">Checkout opens in minutes</h3>
+    <p id="modalBody">We are finalizing the secure checkout. Message me on WhatsApp now and I will hold your $37 access at launch price.</p>
+    <a href="https://wa.me/19548600537" class="btn btn-primary btn-block" target="_blank" rel="noopener" id="modalCta">Talk to Ivan on WhatsApp</a>
+    <button type="button" class="btn btn-ghost btn-block" id="modalClose" style="margin-top:9px">Close</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG — set these to go live. Empty string = safe placeholder.
+   ============================================================ */
+const CONFIG = {
+  checkoutUrl:  "",      // e.g. "https://whop.com/askivan/clone-digital"  -> buy button goes there
+  affiliateUrl: "",      // e.g. Whop affiliate signup URL
+  heroVideo:    "",      // e.g. "assets/avatar.mp4"  or  "https://youtu.be/VIDEO_ID"
+  whatsapp:     "19548600537",
+  radarPath:    "radar.json",
+  defaultLang:  "en"     // used only if the browser language is not EN/PT/ES
+};
+
+/* ============================================================
+   i18n
+   ============================================================ */
+const I18N = {
+  en: {
+    "nav.product":"Product","nav.affiliate":"Affiliate","nav.radar":"Radar","nav.buy":"Get it — $37",
+    "hero.eyebrow":"AI Avatar System",
+    "hero.h1a":"Master","hero.h1b":"AI Avatar Creation","hero.h1c":"— and discover the best digital opportunities on the market.",
+    "hero.lede":"Build a photorealistic digital clone of yourself — face, voice and presence — and use it to sell, teach and scale. No camera crew. No studio.",
+    "hero.cta1":"Get the Method — $37","hero.cta2":"Earn 50% as an affiliate",
+    "hero.m1":"Instant access","hero.m2":"Lifetime updates","hero.m3":"English · Portuguese · Spanish",
+    "hero.videobadge":"Avatar preview",
+    "hero.videotitle":"Your avatar presents this portal",
+    "hero.videosub":"Video arriving soon — this slot is ready to receive it.",
+    "prod.kicker":"Main product","prod.h2a":"Método Clone Digital",
+    "prod.sub":"The complete path from zero to a digital clone that looks and sounds like you — and a production line that turns one idea into a week of content.",
+    "prod.f1t":"Choosing your avatar","prod.f1d":"Which tool to use, when, and how to avoid the \"AI look\" that kills trust.",
+    "prod.f2t":"Voice cloning that sounds human","prod.f2d":"Recording, cleaning and cloning your voice so it stops sounding robotic.",
+    "prod.f3t":"Lip-sync and presence","prod.f3d":"Getting the mouth and the eyes right — the two things viewers notice instantly.",
+    "prod.f4t":"From script to finished video","prod.f4d":"A repeatable production flow — one recording session feeds dozens of videos.",
+    "prod.f5t":"Turning content into money","prod.f5d":"Where an avatar actually pays: offers, funnels, ads and client work.",
+    "prod.plan":"Clone Digital — full access","prod.once":"one-time",
+    "prod.desc":"Everything you need to build, produce and publish with your own AI avatar.",
+    "prod.p1":"The full Método Clone Digital","prod.p2":"Step-by-step tool stack","prod.p3":"Production templates","prod.p4":"Lifetime updates","prod.p5":"Affiliate access: 50% per sale",
+    "prod.cta":"Buy now — $37","prod.note":"Secure checkout. Access released immediately after payment.",
+    "aff.kicker":"Affiliate program","aff.h2":"Recommend it. Keep half.",
+    "aff.sub":"Every sale you send earns 50% commission. Paid automatically, tracked for you — no inventory, no support tickets.",
+    "aff.s1t":"Get your link","aff.s1d":"— one click after you buy.",
+    "aff.s2t":"Share it","aff.s2d":"— your audience, your socials, your clients.",
+    "aff.s3t":"Get paid 50%","aff.s3d":"— automatically on every completed sale.",
+    "aff.pct":"commission","aff.cta":"Join as affiliate",
+    "radar.kicker":"Opportunity radar","radar.h2":"The 3 digital tools worth testing this week",
+    "radar.sub":"Hand-picked every week. Real tools, tested before they land here — no filler, no hype.",
+    "radar.updated":"Updated weekly by Hermes",
+    "radar.visit":"Open tool","radar.week":"Week of",
+    "foot.note":"AI avatars, automation and digital opportunity — built in South Florida.",
+    "foot.legal":"© 2026 AskIvan. All rights reserved. Results depend on your own execution. This site is not affiliated with or endorsed by any third-party tool mentioned in the radar.",
+    "modal.checkoutTag":"Checkout","modal.checkoutTitle":"Checkout opens in minutes",
+    "modal.checkoutBody":"We are finalizing the secure checkout. Message me on WhatsApp now and I will hold your $37 access at launch price.",
+    "modal.affTag":"Affiliate program","modal.affTitle":"Affiliate access is opening",
+    "modal.affBody":"The 50% affiliate panel is being connected right now. Message me on WhatsApp and I will send your link as soon as it is live.",
+    "modal.cta":"Talk to Ivan on WhatsApp","modal.close":"Close"
+  },
+
+  pt: {
+    "nav.product":"Produto","nav.affiliate":"Afiliados","nav.radar":"Radar","nav.buy":"Quero — $37",
+    "hero.eyebrow":"Sistema de Avatar IA",
+    "hero.h1a":"Domine a","hero.h1b":"Criação de Avatares com IA","hero.h1c":"e descubra as melhores oportunidades digitais do mercado.",
+    "hero.lede":"Construa um clone digital seu, fotorrealista — rosto, voz e presença — e use para vender, ensinar e escalar. Sem equipe de filmagem. Sem estúdio.",
+    "hero.cta1":"Quero o Método — $37","hero.cta2":"Ganhar 50% como afiliado",
+    "hero.m1":"Acesso imediato","hero.m2":"Atualizações incluídas","hero.m3":"Inglês · Português · Espanhol",
+    "hero.videobadge":"Prévia do avatar",
+    "hero.videotitle":"Seu avatar apresenta este portal",
+    "hero.videosub":"O vídeo entra em breve — este espaço já está pronto para receber.",
+    "prod.kicker":"Produto principal","prod.h2a":"Método Clone Digital",
+    "prod.sub":"O caminho completo do zero até um clone digital que parece e soa como você — e uma linha de produção que transforma uma ideia em uma semana de conteúdo.",
+    "prod.f1t":"Escolha do avatar","prod.f1d":"Qual ferramenta usar, quando, e como evitar o \"jeito de IA\" que destrói a confiança.",
+    "prod.f2t":"Clonagem de voz natural","prod.f2d":"Gravar, limpar e clonar sua voz para ela parar de soar robótica.",
+    "prod.f3t":"Sincronia labial e presença","prod.f3d":"Acertar a boca e o olhar — as duas coisas que o espectador percebe na hora.",
+    "prod.f4t":"Do roteiro ao vídeo final","prod.f4d":"Um fluxo repetível — uma sessão de gravação alimenta dezenas de vídeos.",
+    "prod.f5t":"Transformar conteúdo em dinheiro","prod.f5d":"Onde o avatar realmente paga: ofertas, funis, anúncios e trabalho para clientes.",
+    "prod.plan":"Clone Digital — acesso completo","prod.once":"pagamento único",
+    "prod.desc":"Tudo o que você precisa para construir, produzir e publicar com o seu próprio avatar de IA.",
+    "prod.p1":"O Método Clone Digital completo","prod.p2":"Stack de ferramentas passo a passo","prod.p3":"Templates de produção","prod.p4":"Atualizações incluídas","prod.p5":"Acesso ao programa de afiliados: 50% por venda",
+    "prod.cta":"Comprar agora — $37","prod.note":"Pagamento seguro. Acesso liberado logo após a confirmação.",
+    "aff.kicker":"Programa de afiliados","aff.h2":"Indique. Fique com metade.",
+    "aff.sub":"Cada venda que você traz paga 50% de comissão. Pago automaticamente, com rastreamento — sem estoque, sem suporte.",
+    "aff.s1t":"Pegue seu link","aff.s1d":"— um clique depois da sua compra.",
+    "aff.s2t":"Compartilhe","aff.s2d":"— sua audiência, suas redes, seus clientes.",
+    "aff.s3t":"Receba 50%","aff.s3d":"— automaticamente em cada venda concluída.",
+    "aff.pct":"de comissão","aff.cta":"Quero ser afiliado",
+    "radar.kicker":"Radar de oportunidades","radar.h2":"As 3 ferramentas digitais que valem teste nesta semana",
+    "radar.sub":"Selecionadas toda semana. Ferramentas reais, testadas antes de entrar aqui — sem enrolação, sem hype.",
+    "radar.updated":"Atualizado toda semana pelo Hermes",
+    "radar.visit":"Abrir ferramenta","radar.week":"Semana de",
+    "foot.note":"Avatares de IA, automação e oportunidade digital — feito no Sul da Flórida.",
+    "foot.legal":"© 2026 AskIvan. Todos os direitos reservados. Os resultados dependem da sua própria execução. Este site não é afiliado nem endossado por nenhuma ferramenta de terceiros citada no radar.",
+    "modal.checkoutTag":"Checkout","modal.checkoutTitle":"O checkout abre em instantes",
+    "modal.checkoutBody":"Estamos finalizando o checkout seguro. Me chame agora no WhatsApp e eu seguro seu acesso por $37 no preço de lançamento.",
+    "modal.affTag":"Programa de afiliados","modal.affTitle":"O acesso de afiliado está abrindo",
+    "modal.affBody":"O painel de afiliados com 50% está sendo conectado agora. Me chame no WhatsApp e eu envio seu link assim que estiver no ar.",
+    "modal.cta":"Falar com Ivan no WhatsApp","modal.close":"Fechar"
+  },
+
+  es: {
+    "nav.product":"Producto","nav.affiliate":"Afiliados","nav.radar":"Radar","nav.buy":"Quiero — $37",
+    "hero.eyebrow":"Sistema de Avatar IA",
+    "hero.h1a":"Domina la","hero.h1b":"Creación de Avatares con IA","hero.h1c":"y descubre las mejores oportunidades digitales del mercado.",
+    "hero.lede":"Construye un clon digital tuyo, fotorrealista — rostro, voz y presencia — y úsalo para vender, enseñar y escalar. Sin equipo de filmación. Sin estudio.",
+    "hero.cta1":"Quiero el Método — $37","hero.cta2":"Ganar 50% como afiliado",
+    "hero.m1":"Acceso inmediato","hero.m2":"Actualizaciones incluidas","hero.m3":"Inglés · Portugués · Español",
+    "hero.videobadge":"Vista previa del avatar",
+    "hero.videotitle":"Tu avatar presenta este portal",
+    "hero.videosub":"El video llega pronto — este espacio ya está listo para recibirlo.",
+    "prod.kicker":"Producto principal","prod.h2a":"Método Clone Digital",
+    "prod.sub":"El camino completo desde cero hasta un clon digital que se ve y suena como tú — y una línea de producción que convierte una idea en una semana de contenido.",
+    "prod.f1t":"Elegir tu avatar","prod.f1d":"Qué herramienta usar, cuándo, y cómo evitar el \"aspecto de IA\" que destruye la confianza.",
+    "prod.f2t":"Clonación de voz natural","prod.f2d":"Grabar, limpiar y clonar tu voz para que deje de sonar robótica.",
+    "prod.f3t":"Sincronía labial y presencia","prod.f3d":"Acertar la boca y la mirada — las dos cosas que el espectador nota al instante.",
+    "prod.f4t":"Del guion al video final","prod.f4d":"Un flujo repetible — una sesión de grabación alimenta decenas de videos.",
+    "prod.f5t":"Convertir contenido en dinero","prod.f5d":"Donde el avatar realmente paga: ofertas, embudos, anuncios y trabajo para clientes.",
+    "prod.plan":"Clone Digital — acceso completo","prod.once":"pago único",
+    "prod.desc":"Todo lo que necesitas para construir, producir y publicar con tu propio avatar de IA.",
+    "prod.p1":"El Método Clone Digital completo","prod.p2":"Stack de herramientas paso a paso","prod.p3":"Plantillas de producción","prod.p4":"Actualizaciones incluidas","prod.p5":"Acceso al programa de afiliados: 50% por venta",
+    "prod.cta":"Comprar ahora — $37","prod.note":"Pago seguro. Acceso liberado justo después del pago.",
+    "aff.kicker":"Programa de afiliados","aff.h2":"Recomiéndalo. Quédate con la mitad.",
+    "aff.sub":"Cada venta que traigas gana 50% de comisión. Pagado automáticamente y con seguimiento — sin inventario, sin soporte.",
+    "aff.s1t":"Obtén tu enlace","aff.s1d":"— un clic después de tu compra.",
+    "aff.s2t":"Compártelo","aff.s2d":"— tu audiencia, tus redes, tus clientes.",
+    "aff.s3t":"Cobra el 50%","aff.s3d":"— automáticamente en cada venta completada.",
+    "aff.pct":"de comisión","aff.cta":"Quiero ser afiliado",
+    "radar.kicker":"Radar de oportunidades","radar.h2":"Las 3 herramientas digitales que vale la pena probar esta semana",
+    "radar.sub":"Seleccionadas cada semana. Herramientas reales, probadas antes de llegar aquí — sin relleno, sin hype.",
+    "radar.updated":"Actualizado cada semana por Hermes",
+    "radar.visit":"Abrir herramienta","radar.week":"Semana del",
+    "foot.note":"Avatares de IA, automatización y oportunidad digital — hecho en el sur de Florida.",
+    "foot.legal":"© 2026 AskIvan. Todos los derechos reservados. Los resultados dependen de tu propia ejecución. Este sitio no está afiliado ni respaldado por ninguna herramienta de terceros mencionada en el radar.",
+    "modal.checkoutTag":"Checkout","modal.checkoutTitle":"El checkout abre en minutos",
+    "modal.checkoutBody":"Estamos finalizando el checkout seguro. Escríbeme ahora por WhatsApp y te reservo el acceso por $37 al precio de lanzamiento.",
+    "modal.affTag":"Programa de afiliados","modal.affTitle":"El acceso de afiliado está abriendo",
+    "modal.affBody":"El panel de afiliados con 50% se está conectando ahora. Escríbeme por WhatsApp y te envío tu enlace en cuanto esté listo.",
+    "modal.cta":"Hablar con Ivan por WhatsApp","modal.close":"Cerrar"
+  }
+};
+
+const LANGS = ["en","pt","es"];
+const META_DESC = {
+  en:"Master AI avatar creation and discover the best digital opportunities on the market. Método Clone Digital + weekly opportunity radar.",
+  pt:"Domine a criação de avatares com IA e descubra as melhores oportunidades digitais do mercado. Método Clone Digital + radar semanal.",
+  es:"Domina la creación de avatares con IA y descubre las mejores oportunidades digitales del mercado. Método Clone Digital + radar semanal."
+};
+
+function dict(){ return I18N[document.documentElement.lang] || I18N.en; }
+function t(key){ const d = dict(); return d[key] ?? I18N.en[key] ?? key; }
+
+function applyLang(lang){
+  if(!LANGS.includes(lang)) lang = CONFIG.defaultLang;
+  const html = document.documentElement;
+  html.lang = lang;
+  if(html.dataset.lang === lang) { renderRadarIfReady(); return; }
+  html.dataset.lang = lang;
+
+  document.querySelectorAll("[data-t]").forEach(el=>{
+    const v = t(el.dataset.t);
+    if(v !== undefined) el.textContent = v;
+  });
+
+  document.querySelectorAll(".lang button").forEach(b=>{
+    b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+  });
+
+  const md = document.querySelector('meta[name="description"]');
+  if(md) md.setAttribute("content", META_DESC[lang] || META_DESC.en);
+  if(radarData) renderRadar(radarData);
+  refreshModal();
+  try{ localStorage.setItem("askivan_lang", lang); }catch(e){}
+}
+
+function pickLang(){
+  let saved = null;
+  try{ saved = localStorage.getItem("askivan_lang"); }catch(e){}
+  if(saved && LANGS.includes(saved)) return saved;
+  const list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "en"];
+  for(const raw of list){
+    const code = String(raw).toLowerCase().slice(0,2);
+    if(LANGS.includes(code)) return code;
+  }
+  return CONFIG.defaultLang;
+}
+
+/* ============================================================
+   RADAR — reads radar.json (updated by Hermes via commit).
+   Falls back to a seed list so the section is never empty.
+   ============================================================ */
+const RADAR_FALLBACK = {
+  updated:"", items:[
+    { tag:"Avatar video", title:"HeyGen", desc:"Talking avatars and precise lip-sync from a single recording. The fastest way to see yourself on screen in another language.", url:"https://www.heygen.com" },
+    { tag:"Music / voice", title:"Suno", desc:"Full songs from a text prompt, including a cloned vocal persona. Useful for intros, jingles and branded audio.", url:"https://suno.com" },
+    { tag:"Video generation", title:"Kling AI", desc:"Short cinematic clips with strong physics and camera control. Good for B-roll when you have no footage.", url:"https://klingai.com" }
+  ]
+};
+let radarData = null;
+
+function esc(s){ return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function safeUrl(u){
+  try{
+    const p = new URL(String(u), location.href);
+    return (p.protocol === "http:" || p.protocol === "https:") ? p.href : "#";
+  }catch(e){ return "#"; }
+}
+
+function renderRadar(data){
+  const grid = document.getElementById("radarGrid");
+  if(!grid) return;
+  const items = (data && Array.isArray(data.items) ? data.items : []).slice(0,3);
+  if(!items.length){ renderRadar(RADAR_FALLBACK); return; }
+  radarData = data;
+  grid.innerHTML = items.map((it,i)=>`
+    <a class="card" href="${esc(safeUrl(it.url))}" target="_blank" rel="noopener nofollow" style="animation-delay:${i*60}ms">
+      <div class="card-top">
+        <span class="tag">${esc(it.tag || "Tool")}</span>
+        <span class="rank">#${i+1}</span>
+      </div>
+      <h3>${esc(it.title || "")}</h3>
+      <p>${esc(it.desc || "")}</p>
+      <span class="card-link">${esc(t("radar.visit"))}
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </span>
+    </a>`).join("");
+
+  const meta = document.querySelector(".radar-meta span:last-child");
+  if(meta && data.updated){
+    meta.textContent = t("radar.week") + " " + data.updated;
+  } else if(meta){
+    meta.textContent = t("radar.updated");
+  }
+}
+function renderRadarIfReady(){ if(radarData) renderRadar(radarData); }
+
+function loadRadar(){
+  renderRadar(RADAR_FALLBACK);              // instant paint, never empty
+  fetch(CONFIG.radarPath, {cache:"no-store"})
+    .then(r => r.ok ? r.json() : Promise.reject())
+    .then(d => renderRadar(d))
+    .catch(()=>{ /* keep seed list */ });
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+let modalMode = "checkout";
+const modal = document.getElementById("modal");
+
+function refreshModal(){
+  const tag = document.getElementById("modalTag");
+  const h = document.getElementById("modalTitle");
+  const p = document.getElementById("modalBody");
+  const c = document.getElementById("modalCta");
+  const lc = document.getElementById("modalClose");
+  const isAff = modalMode === "affiliate";
+  tag.textContent = t(isAff ? "modal.affTag" : "modal.checkoutTag");
+  h.textContent   = t(isAff ? "modal.affTitle" : "modal.checkoutTitle");
+  p.textContent   = t(isAff ? "modal.affBody" : "modal.checkoutBody");
+  c.textContent   = t("modal.cta");
+  if(lc) lc.textContent = t("modal.close");
+  c.href = "https://wa.me/" + CONFIG.whatsapp;
+}
+function openModal(mode){
+  modalMode = mode || "checkout";
+  refreshModal();
+  modal.setAttribute("open","");
+  document.body.style.overflow = "hidden";
+  const btn = modal.querySelector(".modal-x");
+  if(btn) btn.focus();
+}
+function closeModal(){
+  modal.removeAttribute("open");
+  document.body.style.overflow = "";
+}
+
+/* ============================================================
+   HERO VIDEO
+   ============================================================ */
+function mountHeroVideo(){
+  const src = (CONFIG.heroVideo || "").trim();
+  if(!src) return;
+  const slot = document.getElementById("heroVideoSlot");
+  if(!slot) return;
+  const yt = src.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
+  const ph = slot.querySelector(".video-ph");
+  const badge = slot.querySelector(".video-badge");
+  if(ph) ph.remove();
+  if(badge) badge.remove();
+  if(yt){
+    const f = document.createElement("iframe");
+    f.src = "https://www.youtube-nocookie.com/embed/" + yt[1] + "?rel=0&playsinline=1";
+    f.title = "AskIvan avatar";
+    f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    f.allowFullscreen = true;
+    f.loading = "lazy";
+    slot.appendChild(f);
+  } else {
+    const v = document.createElement("video");
+    v.src = src;
+    v.controls = true;
+    v.playsInline = true;
+    v.preload = "metadata";
+    v.setAttribute("playsinline","");
+    if(slot.dataset.poster) v.poster = slot.dataset.poster;
+    slot.appendChild(v);
+  }
+}
+
+/* ============================================================
+   WIRE UP
+   ============================================================ */
+document.querySelectorAll(".lang button").forEach(b=>{
+  b.addEventListener("click", ()=> applyLang(b.dataset.lang));
+});
+
+document.getElementById("buyBtn").addEventListener("click", ()=>{
+  if(CONFIG.checkoutUrl){
+    window.location.href = CONFIG.checkoutUrl;
+  } else {
+    openModal("checkout");
+  }
+});
+document.getElementById("affBtn").addEventListener("click", ()=>{
+  if(CONFIG.affiliateUrl){
+    window.location.href = CONFIG.affiliateUrl;
+  } else {
+    openModal("affiliate");
+  }
+});
+
+document.getElementById("modalX").addEventListener("click", closeModal);
+document.getElementById("modalClose").addEventListener("click", closeModal);
+modal.addEventListener("click", e => { if(e.target === modal) closeModal(); });
+document.addEventListener("keydown", e => { if(e.key === "Escape" && modal.hasAttribute("open")) closeModal(); });
+
+/* reveal on scroll */
+if("IntersectionObserver" in window){
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, {rootMargin:"0px 0px -8% 0px", threshold:.08});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+  /* safety net: never leave content hidden, whatever the observer does */
+  setTimeout(()=>document.querySelectorAll(".reveal:not(.in)").forEach(el=>el.classList.add("in")), 1800);
+} else {
+  document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));
+}
+
+/* boot */
+applyLang(pickLang());
+mountHeroVideo();
+loadRadar();
+refreshModal();
+</script>
+</body>
+</html>

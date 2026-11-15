@@ -1,0 +1,24 @@
+{
+  "updated": "2026-11-15",
+  "note": "Radar de Oportunidades — editado por Hermes via commit neste arquivo. Máximo 3 itens. Campos: tag, title, desc, url. Depois de commitar, o GitHub Pages publica em ~1 minuto.",
+  "items": [
+    {
+      "tag": "Avatar video",
+      "title": "HeyGen",
+      "desc": "Talking avatars and precise lip-sync from a single recording. The fastest way to see yourself on screen in another language.",
+      "url": "https://www.heygen.com"
+    },
+    {
+      "tag": "Music / voice",
+      "title": "Suno",
+      "desc": "Full songs from a text prompt, including a cloned vocal persona. Useful for intros, jingles and branded audio.",
+      "url": "https://suno.com"
+    },
+    {
+      "tag": "Video generation",
+      "title": "Kling AI",
+      "desc": "Short cinematic clips with strong physics and camera control. Good for B-roll when you have no footage.",
+      "url": "https://klingai.com"
+    }
+  ]
+}

@@ -9,7 +9,6 @@ Landing page estática (um arquivo) publicada via GitHub Pages no domínio **ask
 | `index.html` | Portal completo — EN / PT / ES, hero com slot de vídeo, produto $37, afiliados 50%, radar |
 | `radar.json` | Fonte do Radar de Oportunidades — **é este arquivo que o Hermes atualiza** |
 | `CNAME` | `askivan.co` — não apagar, sem isso o domínio cai |
-| `edson-david-lower-payment.html` | Página neutra que substitui o link já enviado por SMS. Sem PII, `noindex` |
 | `terms/index.html` | Termos de Uso (EN/PT/ES) → `https://askivan.co/terms/` |
 | `privacy/index.html` | Política de Privacidade (EN/PT/ES) → `https://askivan.co/privacy/` |
 | `thank-you/index.html` | Pós-compra (`noindex`) → `https://askivan.co/thank-you/` |

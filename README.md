@@ -19,7 +19,7 @@ Landing page estática (um arquivo) publicada via GitHub Pages no domínio **ask
 
 - **URL de redirect pós-compra** → `https://askivan.co/thank-you/`
 - Nos Termos e na Política estão descritos: garantia de 7 dias, comissão de 50%,
-  processamento pela Whop e contato `ai360ivansilva@gmail.com` / +1 (954) 860-0537.
+  processamento pela Whop e contato `ia360ivansilva@gmail.com` / +1 (954) 860-0537.
 - Se mudar a garantia, mude **nos 3 idiomas** em `terms/index.html`
   (chaves `t.s6p` em EN/PT/ES).
 

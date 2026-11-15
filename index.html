@@ -289,28 +289,6 @@ h2{font-size:clamp(24px,3.3vw,36px);line-height:1.15;letter-spacing:-.028em;font
 .foot-links a:hover{color:var(--accent)}
 .legal{font-size:11.5px;color:#666e7b;margin-top:28px;padding-top:20px;border-top:1px solid var(--line);line-height:1.6}
 
-/* modal */
-.modal{
-  position:fixed;inset:0;z-index:100;display:none;place-items:center;padding:20px;
-  background:rgba(4,5,7,.78);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
-}
-.modal[open]{display:grid}
-.modal-box{
-  width:100%;max-width:440px;border-radius:20px;padding:30px;
-  background:linear-gradient(168deg,#141821,#0b0d12);
-  border:1px solid var(--line-2);box-shadow:0 40px 90px -30px #000;
-  position:relative;animation:pop .24s var(--ease);
-}
-@keyframes pop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
-.modal-x{position:absolute;top:13px;right:13px;width:31px;height:31px;border-radius:9px;display:grid;place-items:center;color:var(--muted);background:var(--surface)}
-.modal-x:hover{color:var(--text);background:var(--surface-2)}
-.modal-box h3{font-size:20px;font-weight:730;letter-spacing:-.02em;margin-bottom:9px;padding-right:30px}
-.modal-box p{font-size:14px;color:var(--muted);line-height:1.62;margin-bottom:22px}
-.modal-tag{
-  display:inline-block;font-size:10.5px;font-weight:720;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--accent);background:rgba(56,232,168,.1);border:1px solid rgba(56,232,168,.25);
-  padding:4px 9px;border-radius:6px;margin-bottom:13px;
-}
 
 /* reveal — content is visible by default; only the .js class hides it first,
    so a failed script can never leave the page blank. */
@@ -338,7 +316,6 @@ h2{font-size:clamp(24px,3.3vw,36px);line-height:1.15;letter-spacing:-.028em;font
   .hero-cta{flex-direction:column}
   .hero-cta .btn{width:100%}
   .price-card{padding:22px}
-  .modal-box{padding:24px}
   .video-slot{aspect-ratio:4/3}
 }
 @media (prefers-reduced-motion:reduce){
@@ -494,7 +471,7 @@ h2{font-size:clamp(24px,3.3vw,36px);line-height:1.15;letter-spacing:-.028em;font
             <h2 style="margin-bottom:10px" data-t="aff.h2">Recommend it. Keep half.</h2>
             <p style="color:var(--muted);font-size:14.5px;max-width:40ch" data-t="aff.sub">Every sale you send earns 50% commission. Paid automatically, tracked for you — no inventory, no support tickets.</p>
             <ul class="steps">
-              <li><span class="step-n">1</span><div><b data-t="aff.s1t">Get your link</b> <span data-t="aff.s1d">— one click after you buy.</span></div></li>
+              <li><span class="step-n">1</span><div><b data-t="aff.s1t">Get your link</b> <span data-t="aff.s1d">— one click, free to join.</span></div></li>
               <li><span class="step-n">2</span><div><b data-t="aff.s2t">Share it</b> <span data-t="aff.s2d">— your audience, your socials, your clients.</span></div></li>
               <li><span class="step-n">3</span><div><b data-t="aff.s3t">Get paid 50%</b> <span data-t="aff.s3d">— automatically on every completed sale.</span></div></li>
             </ul>
@@ -502,7 +479,7 @@ h2{font-size:clamp(24px,3.3vw,36px);line-height:1.15;letter-spacing:-.028em;font
           <div class="aff-pct">
             <div class="n">50%</div>
             <small data-t="aff.pct">commission</small>
-            <button type="button" class="btn btn-ghost" id="affBtn" style="margin-top:18px;width:100%" data-affiliate="pending">
+            <button type="button" class="btn btn-ghost" id="affBtn" style="margin-top:18px;width:100%" data-affiliate="whop">
               <span data-t="aff.cta">Join as affiliate</span>
             </button>
           </div>
@@ -544,7 +521,7 @@ h2{font-size:clamp(24px,3.3vw,36px);line-height:1.15;letter-spacing:-.028em;font
         <a href="#radar" data-t="nav.radar">Radar</a>
         <a href="/terms/" data-t="nav.terms">Terms of Use</a>
         <a href="/privacy/" data-t="nav.privacy">Privacy Policy</a>
-        <a href="https://wa.me/19548600537" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://wa.me/19548600537" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         <a href="mailto:ia360ivansilva@gmail.com">Email</a>
       </div>
     </div>
@@ -552,19 +529,6 @@ h2{font-size:clamp(24px,3.3vw,36px);line-height:1.15;letter-spacing:-.028em;font
   </div>
 </footer>
 
-<!-- ============ MODAL (shown while checkout is being connected) ============ -->
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal-box">
-    <button type="button" class="modal-x" id="modalX" aria-label="Close">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-    </button>
-    <span class="modal-tag" id="modalTag">Checkout</span>
-    <h3 id="modalTitle">Checkout opens in minutes</h3>
-    <p id="modalBody">We are finalizing the secure checkout. Message me on WhatsApp now and I will hold your $37 access at launch price.</p>
-    <a href="https://wa.me/19548600537" class="btn btn-primary btn-block" target="_blank" rel="noopener" id="modalCta">Talk to Ivan on WhatsApp</a>
-    <button type="button" class="btn btn-ghost btn-block" id="modalClose" style="margin-top:9px">Close</button>
-  </div>
-</div>
 
 <script>
 /* ============================================================
@@ -575,7 +539,6 @@ const CONFIG = {
   affiliateUrl: "https://whop.com/askivan/affiliates",        // Whop affiliate portal (50%)
   heroVideo:    "assets/videos/askivan-hero-avatar.mp4",   // mp4 path or "https://youtu.be/VIDEO_ID"
   heroPoster:   "assets/videos/askivan-hero-poster.jpg",
-  whatsapp:     "19548600537",
   radarPath:    "radar.json",
   defaultLang:  "en"     // used only if the browser language is not EN/PT/ES
 };
@@ -608,7 +571,7 @@ const I18N = {
     "prod.cta":"Buy now — $37","prod.note":"Secure checkout. Access released immediately after payment.","prod.termsA":"By buying you agree to the","prod.termsB":"and the",
     "aff.kicker":"Affiliate program","aff.h2":"Recommend it. Keep half.",
     "aff.sub":"Every sale you send earns 50% commission. Paid automatically, tracked for you — no inventory, no support tickets.",
-    "aff.s1t":"Get your link","aff.s1d":"— one click after you buy.",
+    "aff.s1t":"Get your link","aff.s1d":"— one click, free to join.",
     "aff.s2t":"Share it","aff.s2d":"— your audience, your socials, your clients.",
     "aff.s3t":"Get paid 50%","aff.s3d":"— automatically on every completed sale.",
     "aff.pct":"commission","aff.cta":"Join as affiliate",
@@ -617,12 +580,7 @@ const I18N = {
     "radar.updated":"Updated weekly by Hermes",
     "radar.visit":"Open tool","radar.week":"Week of",
     "foot.note":"AI avatars, automation and digital opportunity — built in South Florida.",
-    "foot.legal":"© 2026 AskIvan. All rights reserved. Results depend on your own execution. This site is not affiliated with or endorsed by any third-party tool mentioned in the radar.",
-    "modal.checkoutTag":"Checkout","modal.checkoutTitle":"Checkout opens in minutes",
-    "modal.checkoutBody":"We are finalizing the secure checkout. Message me on WhatsApp now and I will hold your $37 access at launch price.",
-    "modal.affTag":"Affiliate program","modal.affTitle":"Affiliate access is opening",
-    "modal.affBody":"The 50% affiliate panel is being connected right now. Message me on WhatsApp and I will send your link as soon as it is live.",
-    "modal.cta":"Talk to Ivan on WhatsApp","modal.close":"Close"
+    "foot.legal":"© 2026 AskIvan. All rights reserved. Results depend on your own execution. This site is not affiliated with or endorsed by any third-party tool mentioned in the radar."
   },
 
   pt: {
@@ -649,7 +607,7 @@ const I18N = {
     "prod.cta":"Comprar agora — $37","prod.note":"Pagamento seguro. Acesso liberado logo após a confirmação.","prod.termsA":"Ao comprar, você concorda com os","prod.termsB":"e com a",
     "aff.kicker":"Programa de afiliados","aff.h2":"Indique. Fique com metade.",
     "aff.sub":"Cada venda que você traz paga 50% de comissão. Pago automaticamente, com rastreamento — sem estoque, sem suporte.",
-    "aff.s1t":"Pegue seu link","aff.s1d":"— um clique depois da sua compra.",
+    "aff.s1t":"Pegue seu link","aff.s1d":"— um clique, entrada grátis.",
     "aff.s2t":"Compartilhe","aff.s2d":"— sua audiência, suas redes, seus clientes.",
     "aff.s3t":"Receba 50%","aff.s3d":"— automaticamente em cada venda concluída.",
     "aff.pct":"de comissão","aff.cta":"Quero ser afiliado",
@@ -658,12 +616,7 @@ const I18N = {
     "radar.updated":"Atualizado toda semana pelo Hermes",
     "radar.visit":"Abrir ferramenta","radar.week":"Semana de",
     "foot.note":"Avatares de IA, automação e oportunidade digital — feito no Sul da Flórida.",
-    "foot.legal":"© 2026 AskIvan. Todos os direitos reservados. Os resultados dependem da sua própria execução. Este site não é afiliado nem endossado por nenhuma ferramenta de terceiros citada no radar.",
-    "modal.checkoutTag":"Checkout","modal.checkoutTitle":"O checkout abre em instantes",
-    "modal.checkoutBody":"Estamos finalizando o checkout seguro. Me chame agora no WhatsApp e eu seguro seu acesso por $37 no preço de lançamento.",
-    "modal.affTag":"Programa de afiliados","modal.affTitle":"O acesso de afiliado está abrindo",
-    "modal.affBody":"O painel de afiliados com 50% está sendo conectado agora. Me chame no WhatsApp e eu envio seu link assim que estiver no ar.",
-    "modal.cta":"Falar com Ivan no WhatsApp","modal.close":"Fechar"
+    "foot.legal":"© 2026 AskIvan. Todos os direitos reservados. Os resultados dependem da sua própria execução. Este site não é afiliado nem endossado por nenhuma ferramenta de terceiros citada no radar."
   },
 
   es: {
@@ -690,7 +643,7 @@ const I18N = {
     "prod.cta":"Comprar ahora — $37","prod.note":"Pago seguro. Acceso liberado justo después del pago.","prod.termsA":"Al comprar aceptas los","prod.termsB":"y la",
     "aff.kicker":"Programa de afiliados","aff.h2":"Recomiéndalo. Quédate con la mitad.",
     "aff.sub":"Cada venta que traigas gana 50% de comisión. Pagado automáticamente y con seguimiento — sin inventario, sin soporte.",
-    "aff.s1t":"Obtén tu enlace","aff.s1d":"— un clic después de tu compra.",
+    "aff.s1t":"Obtén tu enlace","aff.s1d":"— un clic, gratis para unirte.",
     "aff.s2t":"Compártelo","aff.s2d":"— tu audiencia, tus redes, tus clientes.",
     "aff.s3t":"Cobra el 50%","aff.s3d":"— automáticamente en cada venta completada.",
     "aff.pct":"de comisión","aff.cta":"Quiero ser afiliado",
@@ -699,12 +652,7 @@ const I18N = {
     "radar.updated":"Actualizado cada semana por Hermes",
     "radar.visit":"Abrir herramienta","radar.week":"Semana del",
     "foot.note":"Avatares de IA, automatización y oportunidad digital — hecho en el sur de Florida.",
-    "foot.legal":"© 2026 AskIvan. Todos los derechos reservados. Los resultados dependen de tu propia ejecución. Este sitio no está afiliado ni respaldado por ninguna herramienta de terceros mencionada en el radar.",
-    "modal.checkoutTag":"Checkout","modal.checkoutTitle":"El checkout abre en minutos",
-    "modal.checkoutBody":"Estamos finalizando el checkout seguro. Escríbeme ahora por WhatsApp y te reservo el acceso por $37 al precio de lanzamiento.",
-    "modal.affTag":"Programa de afiliados","modal.affTitle":"El acceso de afiliado está abriendo",
-    "modal.affBody":"El panel de afiliados con 50% se está conectando ahora. Escríbeme por WhatsApp y te envío tu enlace en cuanto esté listo.",
-    "modal.cta":"Hablar con Ivan por WhatsApp","modal.close":"Cerrar"
+    "foot.legal":"© 2026 AskIvan. Todos los derechos reservados. Los resultados dependen de tu propia ejecución. Este sitio no está afiliado ni respaldado por ninguna herramienta de terceros mencionada en el radar."
   }
 };
 
@@ -737,7 +685,6 @@ function applyLang(lang){
   const md = document.querySelector('meta[name="description"]');
   if(md) md.setAttribute("content", META_DESC[lang] || META_DESC.en);
   if(radarData) renderRadar(radarData);
-  refreshModal();
   try{ localStorage.setItem("askivan_lang", lang); }catch(e){}
 }
 
@@ -767,10 +714,13 @@ const RADAR_FALLBACK = {
 let radarData = null;
 
 function esc(s){ return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+const APP_SUBDOMAINS = /^(app|apps|studio|dashboard|console|platform|my|account|accounts|login|auth|creator|admin)\./i;
 function safeUrl(u){
+  // Radar links always point to the tool's PUBLIC home page: no paths, IDs, projects or logged-in app URLs.
   try{
     const p = new URL(String(u), location.href);
-    return (p.protocol === "http:" || p.protocol === "https:") ? p.href : "#";
+    if(p.protocol !== "http:" && p.protocol !== "https:") return "#";
+    return "https://" + p.hostname.replace(APP_SUBDOMAINS, "") + "/";
   }catch(e){ return "#"; }
 }
 
@@ -781,7 +731,7 @@ function renderRadar(data){
   if(!items.length){ renderRadar(RADAR_FALLBACK); return; }
   radarData = data;
   grid.innerHTML = items.map((it,i)=>`
-    <a class="card" href="${esc(safeUrl(it.url))}" target="_blank" rel="noopener nofollow" style="animation-delay:${i*60}ms">
+    <a class="card" href="${esc(safeUrl(it.url))}" target="_blank" rel="noopener noreferrer nofollow" style="animation-delay:${i*60}ms">
       <div class="card-top">
         <span class="tag">${esc(it.tag || "Tool")}</span>
         <span class="rank">#${i+1}</span>
@@ -808,39 +758,6 @@ function loadRadar(){
     .then(r => r.ok ? r.json() : Promise.reject())
     .then(d => renderRadar(d))
     .catch(()=>{ /* keep seed list */ });
-}
-
-/* ============================================================
-   MODAL
-   ============================================================ */
-let modalMode = "checkout";
-const modal = document.getElementById("modal");
-
-function refreshModal(){
-  const tag = document.getElementById("modalTag");
-  const h = document.getElementById("modalTitle");
-  const p = document.getElementById("modalBody");
-  const c = document.getElementById("modalCta");
-  const lc = document.getElementById("modalClose");
-  const isAff = modalMode === "affiliate";
-  tag.textContent = t(isAff ? "modal.affTag" : "modal.checkoutTag");
-  h.textContent   = t(isAff ? "modal.affTitle" : "modal.checkoutTitle");
-  p.textContent   = t(isAff ? "modal.affBody" : "modal.checkoutBody");
-  c.textContent   = t("modal.cta");
-  if(lc) lc.textContent = t("modal.close");
-  c.href = "https://wa.me/" + CONFIG.whatsapp;
-}
-function openModal(mode){
-  modalMode = mode || "checkout";
-  refreshModal();
-  modal.setAttribute("open","");
-  document.body.style.overflow = "hidden";
-  const btn = modal.querySelector(".modal-x");
-  if(btn) btn.focus();
-}
-function closeModal(){
-  modal.removeAttribute("open");
-  document.body.style.overflow = "";
 }
 
 /* ============================================================
@@ -899,25 +816,19 @@ document.querySelectorAll(".lang button").forEach(b=>{
   b.addEventListener("click", ()=> applyLang(b.dataset.lang));
 });
 
+function openExternal(url){
+  // new tab, no opener/referrer leak, never a WhatsApp fallback
+  const a = document.createElement("a");
+  a.href = url; a.target = "_blank"; a.rel = "noopener noreferrer";
+  document.body.appendChild(a); a.click(); a.remove();
+}
 document.getElementById("buyBtn").addEventListener("click", ()=>{
-  if(CONFIG.checkoutUrl){
-    window.location.href = CONFIG.checkoutUrl;
-  } else {
-    openModal("checkout");
-  }
+  if(CONFIG.checkoutUrl) openExternal(CONFIG.checkoutUrl);
 });
 document.getElementById("affBtn").addEventListener("click", ()=>{
-  if(CONFIG.affiliateUrl){
-    window.location.href = CONFIG.affiliateUrl;
-  } else {
-    openModal("affiliate");
-  }
+  if(CONFIG.affiliateUrl) openExternal(CONFIG.affiliateUrl);
 });
 
-document.getElementById("modalX").addEventListener("click", closeModal);
-document.getElementById("modalClose").addEventListener("click", closeModal);
-modal.addEventListener("click", e => { if(e.target === modal) closeModal(); });
-document.addEventListener("keydown", e => { if(e.key === "Escape" && modal.hasAttribute("open")) closeModal(); });
 
 /* reveal on scroll */
 if("IntersectionObserver" in window){
@@ -935,7 +846,6 @@ if("IntersectionObserver" in window){
 applyLang(pickLang());
 mountHeroVideo();
 loadRadar();
-refreshModal();
 </script>
 </body>
 </html>

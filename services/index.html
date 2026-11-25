@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AskIvan — AI clone videos for your business</title>
+<meta name="description" content="AI clone videos for businesses and professionals: your digital clone presents your products, listings and updates, no filming needed.">
+<meta name="theme-color" content="#08090c">
+<link rel="canonical" href="https://askivan.co/services/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b0d11'/><text x='50' y='68' font-size='52' font-family='system-ui,sans-serif' font-weight='700' fill='%2338e8a8' text-anchor='middle'>A</text></svg>">
+<style>
+:root{
+  --bg:#08090c;--line:rgba(255,255,255,.09);--line-2:rgba(255,255,255,.16);
+  --surface:rgba(255,255,255,.035);--text:#f2f4f8;--muted:#9aa3b2;
+  --accent:#38e8a8;--accent-ink:#090D16;--accent-2:#6c8cff;--radius:18px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  min-height:100vh;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+  line-height:1.6;letter-spacing:-.011em;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  display:flex;flex-direction:column;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(60rem 40rem at 78% -12%,rgba(56,232,168,.12),transparent 60%),
+    radial-gradient(50rem 36rem at 8% 4%,rgba(108,140,255,.10),transparent 62%);
+}
+.grid{
+  position:fixed;left:-50%;right:-50%;bottom:-10vh;height:60vh;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(56,232,168,.10) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(56,232,168,.10) 1px,transparent 1px);
+  background-size:64px 64px;
+  transform:perspective(600px) rotateX(62deg);transform-origin:center top;
+  mask-image:linear-gradient(to top,rgba(0,0,0,.9),transparent 85%);
+  -webkit-mask-image:linear-gradient(to top,rgba(0,0,0,.9),transparent 85%);
+  animation:floor 9s linear infinite;
+}
+@keyframes floor{to{background-position:0 64px,0 0}}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+
+header{padding:18px 0;position:relative;z-index:2}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px}
+.brand-mark{width:30px;height:30px;border-radius:9px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:800;font-size:16px}
+.langs{display:flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:11px;background:var(--surface)}
+.langs button{font-size:12.5px;font-weight:600;padding:6px 10px;border-radius:8px;color:var(--muted)}
+.langs button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+
+main{flex:1;position:relative;z-index:1}
+section{padding:60px 0}
+.badge{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:7px 13px;border:1px solid var(--line-2);border-radius:999px;background:var(--surface);color:#cfd6e2}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+h1{font-size:clamp(34px,5.4vw,60px);line-height:1.06;letter-spacing:-.035em;font-weight:800;margin:20px 0 18px;max-width:15em}
+.grad{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(16px,1.6vw,18.5px);color:var(--muted);max-width:37em}
+.hero{padding:30px 0 56px}
+.cta-row{margin-top:30px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+.btn{display:inline-block;padding:15px 24px;border-radius:13px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:15.5px;transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 10px 30px -10px rgba(56,232,168,.6)}
+.link2{font-weight:700;font-size:15px;color:#cfd6e2;border-bottom:1px solid var(--line-2);padding-bottom:2px}
+.link2:hover{color:var(--accent);border-color:var(--accent)}
+.chips{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px}
+.chip{font-size:13.5px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:#d5dbe5}
+.fine{margin-top:16px;font-size:13px;color:#7c8594;max-width:40em}
+
+.kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h2{font-size:clamp(26px,3.4vw,38px);line-height:1.15;letter-spacing:-.028em;font-weight:800;margin:10px 0 12px;max-width:20em}
+.sub{color:var(--muted);font-size:16px;max-width:40em}
+.head{margin-bottom:32px}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
+.panel{border-radius:var(--radius);padding:24px;background:var(--surface);border:1px solid var(--line)}
+.step .n{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-weight:800;background:rgba(56,232,168,.11);color:var(--accent);border:1px solid rgba(56,232,168,.24)}
+.panel h3{font-size:19px;letter-spacing:-.02em;margin:16px 0 8px}
+.panel p{color:var(--muted);font-size:15px}
+
+.packs{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.pack{grid-column:span 2;display:flex;flex-direction:column;position:relative}
+.pack:nth-child(n+4){grid-column:span 3}
+.pack.rec{border-color:rgba(56,232,168,.55);box-shadow:0 0 60px -25px rgba(56,232,168,.5)}
+.tag{align-self:flex-start;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;border-radius:6px;background:rgba(56,232,168,.11);color:var(--accent);border:1px solid rgba(56,232,168,.24);margin-bottom:12px}
+.pack h3{margin:0 0 10px}
+.from{font-size:12.5px;color:#7c8594;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.price{font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
+.price small{font-size:15px;color:var(--muted);font-weight:600;letter-spacing:0}
+.pack ul{list-style:none;margin:18px 0 20px;display:grid;gap:9px;flex:1}
+.pack li{display:flex;gap:11px;align-items:flex-start;color:#d5dbe5;font-size:14.5px}
+.pack li::before{content:"";flex:none;margin-top:8px;width:7px;height:7px;border-radius:2px;background:var(--accent);transform:rotate(45deg)}
+.pack .btn{text-align:center;padding:12px 18px;font-size:14.5px}
+.pack .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line-2)}
+.pack .btn.ghost:hover{border-color:var(--accent);color:var(--accent);box-shadow:none}
+.pnote{margin-top:20px;font-size:14.5px;color:#cfd6e2;padding:14px 18px;border-radius:13px;border:1px dashed var(--line-2)}
+
+.port{display:grid;grid-template-columns:1.25fr .75fr;gap:22px;align-items:start}
+.vcard{position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line-2);background:#000;aspect-ratio:16/10;
+  box-shadow:0 40px 90px -40px rgba(0,0,0,.9),0 0 80px -30px rgba(56,232,168,.25)}
+.vcard video{width:100%;height:100%;object-fit:cover;display:block}
+.play{position:absolute;right:16px;bottom:16px;white-space:nowrap;display:flex;align-items:center;gap:9px;padding:11px 18px;border-radius:999px;background:rgba(56,232,168,.92);color:var(--accent-ink);font-weight:700;font-size:14.5px;box-shadow:0 10px 30px -8px rgba(0,0,0,.7)}
+.play svg{width:15px;height:15px}
+.vcard.playing .play{display:none}
+.caption{margin-top:14px;text-align:center;font-size:13.5px;color:#9aa3b2}
+.pstack{display:grid;gap:16px}
+.lcard{display:flex;flex-direction:column;transition:transform .2s var(--ease),border-color .2s var(--ease)}
+.lcard:hover{transform:translateY(-3px);border-color:rgba(56,232,168,.4)}
+.lcard h3{margin:14px 0 8px;font-size:18px}
+.lcard p{flex:1}
+.rlink{margin-top:14px;font-size:14px;font-weight:700;color:var(--accent)}
+
+.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.rules>:last-child:nth-child(odd){grid-column:1/-1}
+.rules .panel{display:flex;gap:14px;align-items:flex-start}
+.rules .panel::before{content:"";flex:none;margin-top:8px;width:9px;height:9px;border-radius:2px;background:var(--accent);transform:rotate(45deg)}
+.rules p{color:#d5dbe5;font-size:15px}
+.rules b{color:var(--text)}
+
+.faq{display:grid;gap:12px;max-width:820px}
+details{border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);padding:0 22px}
+summary{cursor:pointer;list-style:none;padding:18px 0;font-weight:700;font-size:16.5px;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--accent);font-size:22px;line-height:1;flex:none}
+details[open] summary::after{content:"\2212"}
+details p{color:var(--muted);padding:0 0 18px;font-size:15px}
+
+.final{text-align:center}
+.final .panel{padding:48px 24px;border-color:rgba(56,232,168,.3);background:radial-gradient(40rem 16rem at 50% 0%,rgba(56,232,168,.10),transparent 70%),var(--surface)}
+.final h2{margin:0 auto 12px}
+.final .sub{margin:0 auto}
+.final .btn{margin-top:26px}
+
+.cform{margin:28px auto 0;max-width:640px;display:grid;grid-template-columns:1fr 1fr;gap:14px;text-align:left}
+.cform label{display:grid;gap:6px;font-size:13.5px;font-weight:600;color:#cfd6e2}
+.cform .wide{grid-column:1/-1}
+.cform input,.cform select,.cform textarea{font:inherit;font-size:15px;color:var(--text);background:rgba(0,0,0,.35);border:1px solid var(--line-2);border-radius:11px;padding:12px 13px;width:100%}
+.cform input:focus,.cform select:focus,.cform textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
+.cform select option{color:#111}
+.cform .btn{margin-top:6px}
+.fnote{margin-top:18px;font-size:14px;color:var(--muted)}
+.sent{margin-top:18px;font-weight:700;color:var(--accent)}
+.vmini video{width:100%;border-radius:12px;margin-top:4px;background:#000;aspect-ratio:16/9}
+@media (max-width:600px){.cform{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding:22px 0;position:relative;z-index:1}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13.5px;color:#7c8594}
+footer a{color:#cfd6e2}
+footer a:hover{color:var(--accent)}
+
+@media (max-width:880px){
+  section{padding:44px 0}
+  .steps,.rules{grid-template-columns:1fr}
+  .packs{grid-template-columns:1fr}
+  .pack,.pack:nth-child(n+4){grid-column:auto}
+  .port{grid-template-columns:1fr}
+}
+@media (max-width:480px){
+  .play{right:12px;bottom:12px;padding:9px 14px;font-size:13.5px}
+  .btn{width:100%;text-align:center}
+  .cta-row{flex-direction:column;align-items:stretch;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){.grid{animation:none}html{scroll-behavior:auto}.lcard,.btn{transition:none}}
+</style>
+</head>
+<body>
+<div class="grid" aria-hidden="true"></div>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="https://askivan.co/" aria-label="AskIvan"><span class="brand-mark">A</span>AskIvan</a>
+    <div class="langs" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="pt" aria-pressed="false">PT</button>
+      <button type="button" data-lang="es" aria-pressed="false">ES</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="h1">
+    <div class="wrap">
+      <span class="badge"><span class="pulse" aria-hidden="true"></span><span data-i="badge"></span></span>
+      <h1 id="h1" data-i="h1" data-html></h1>
+      <p class="lead" data-i="lead"></p>
+      <div class="cta-row">
+        <a class="btn" href="#contact" data-i="cta"></a>
+        <a class="link2" href="#portfolio" data-i="cta2"></a>
+      </div>
+      <div class="chips" aria-hidden="false">
+        <span class="chip" data-i="chip1"></span><span class="chip" data-i="chip2"></span><span class="chip" data-i="chip3"></span>
+      </div>
+      <p class="fine" data-i="fine"></p>
+    </div>
+  </section>
+
+  <section id="como" aria-labelledby="hH2">
+    <div class="wrap">
+      <div class="head"><span class="kicker" data-i="hKick"></span><h2 id="hH2" data-i="hH2"></h2></div>
+      <div class="steps">
+        <div class="panel step"><span class="n" aria-hidden="true">1</span><h3 data-i="s1t"></h3><p data-i="s1p"></p></div>
+        <div class="panel step"><span class="n" aria-hidden="true">2</span><h3 data-i="s2t"></h3><p data-i="s2p"></p></div>
+        <div class="panel step"><span class="n" aria-hidden="true">3</span><h3 data-i="s3t"></h3><p data-i="s3p"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pacotes" aria-labelledby="pH2">
+    <div class="wrap">
+      <div class="head"><span class="kicker" data-i="pKick"></span><h2 id="pH2" data-i="pH2"></h2><p class="sub" data-i="pSub"></p></div>
+      <div class="packs" id="packs"></div>
+      <p class="pnote" data-i="pNote"></p>
+    </div>
+  </section>
+
+  <section id="portfolio" aria-labelledby="fH2">
+    <div class="wrap">
+      <div class="head"><span class="kicker" data-i="fKick"></span><h2 id="fH2" data-i="fH2"></h2></div>
+      <div class="port">
+        <div>
+          <div class="vcard" id="vcard">
+            <video id="vid" src="../assets/videos/askivan-hero-avatar.mp4" poster="../assets/videos/askivan-hero-poster.jpg" playsinline preload="metadata" aria-label="" data-i-aria="vidLabel"></video>
+            <button class="play" type="button" id="playBtn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+              <span data-i="watch"></span>
+            </button>
+          </div>
+          <p class="caption" data-i="caption"></p>
+        </div>
+        <div class="pstack">
+          <a class="panel lcard" href="https://guiaautoflorida.com" target="_blank" rel="noopener">
+            <span class="tag" data-i="l1tag"></span>
+            <h3 data-i="l1t"></h3><p data-i="l1p"></p><span class="rlink" data-i="visit"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="regras" aria-labelledby="rH2">
+    <div class="wrap">
+      <div class="head"><span class="kicker" data-i="rKick"></span><h2 id="rH2" data-i="rH2"></h2></div>
+      <div class="rules" id="rules"></div>
+    </div>
+  </section>
+
+  <section id="faq" aria-labelledby="qH2">
+    <div class="wrap">
+      <div class="head"><span class="kicker">FAQ</span><h2 id="qH2" data-i="qH2"></h2></div>
+      <div class="faq" id="faqList"></div>
+    </div>
+  </section>
+
+  <section class="final" id="contact" aria-labelledby="zH2">
+    <div class="wrap">
+      <div class="panel">
+        <h2 id="zH2" data-i="zH2"></h2>
+        <p class="sub" data-i="zSub"></p>
+        <form class="cform" id="cform" action="https://formsubmit.co/ia360ivansilva@gmail.com" method="POST">
+          <label><span data-i="fName"></span><input type="text" name="name" required autocomplete="name"></label>
+          <label><span data-i="fEmail"></span><input type="email" name="email" required autocomplete="email"></label>
+          <label><span data-i="fBiz"></span>
+            <select name="business_type" id="fBizSel" required></select>
+          </label>
+          <label><span data-i="fPack"></span>
+            <select name="package" id="fPackSel"></select>
+          </label>
+          <label class="wide"><span data-i="fMsg"></span><textarea name="message" rows="3"></textarea></label>
+          <input type="hidden" name="language" id="fLang" value="en">
+          <input type="hidden" name="_subject" value="AskIvan Services: new request">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" id="fNext" value="https://askivan.co/services/?sent=1#contact">
+          <input type="text" name="_honey" class="sr" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn wide" type="submit" data-i="fSend"></button>
+        </form>
+        <p class="sent" id="fSent" role="status" data-i="fSent" hidden></p>
+        <p class="fnote"><span data-i="fNote"></span> <a class="wa link2" href="#" target="_blank" rel="noopener" data-i="orWa"></a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> AskIvan</span>
+    <span><span data-i="questions"></span> <a href="https://wa.me/19548600537" target="_blank" rel="noopener">WhatsApp</a> · <a href="mailto:ia360ivansilva@gmail.com">ia360ivansilva@gmail.com</a> · <a href="../terms/" data-i="terms"></a> · <a href="../privacy/" data-i="privacy"></a></span>
+  </div>
+</footer>
+
+<script>
+const WA="https://wa.me/19548600537?text=";
+const T={
+pt:{
+  title:"AskIvan — Vídeos com clone digital para o seu negócio",
+  desc:"Vídeos com clone digital para empresas e profissionais: seu clone apresenta seus produtos, anúncios e novidades, sem precisar gravar.",
+  waMsg:"Oi Ivan, quero saber sobre os vídeos com clone digital da AskIvan para o meu negócio.",
+  badge:"Vídeo com IA para empresas e profissionais",
+  h1:'Seu negócio em vídeo, apresentado por você — <span class="grad">sem gravar um vídeo.</span>',
+  lead:"Seu clone digital, com o seu rosto e a sua voz, apresenta seus produtos, anúncios e novidades. Mais vídeo, com mais frequência, sem marcar gravação. Baseado em Miami, com entrega em todos os EUA.",
+  cta:"Quero um vídeo de teste", cta2:"Ver portfólio",
+  chip1:"Anúncios de imóveis", chip2:"Anúncios de negócios locais", chip3:"Conteúdo de marca pessoal",
+  fine:"Sem promessa de vendas ou de leads: você recebe vídeos prontos para publicar, com o seu rosto e a sua voz.",
+  hKick:"Como funciona", hH2:"Três passos, sem estúdio",
+  s1t:"Você grava uma vez", s1p:"Um vídeo curto e uma declaração de consentimento, com a nossa orientação. Sem precisar assinar nenhuma ferramenta.",
+  s2t:"Nós montamos seu clone", s2p:"Criamos seu avatar e sua voz, e você aprova o resultado antes de qualquer vídeo.",
+  s3t:"Você manda o assunto", s3p:"Envie o produto, anúncio ou novidade e receba vídeos prontos para publicar, com legendas, em geral em até 3 dias úteis.",
+  pKick:"Pacotes", pH2:"Preços claros, a partir de", pSub:"Valores iniciais. O escopo final é confirmado com você antes de começar.",
+  from:"a partir de", mo:"/mês", ask:"Pedir este pacote", rec:"Mais escolhido",
+  packs:[
+   {n:"Vídeo avulso",p:"$147",m:0,i:["1 vídeo de até 60 segundos","Roteiro incluído","Legendas incluídas","Formatos vertical e horizontal"]},
+   {n:"Clone pronto",p:"$197",m:0,i:["Seu avatar e sua voz criados","Sem assinatura: produzimos com a nossa licença comercial","1 vídeo incluído","Orientação na gravação inicial"]},
+   {n:"Vídeos do mês",p:"$397",m:1,r:1,i:["4 vídeos por mês","Roteiros e legendas","Formatos vertical e horizontal","Revisão antes de publicar"]},
+   {n:"Pro",p:"$797",m:1,i:["12 vídeos por mês","Roteiros e legendas","Versões em espanhol sob pedido","Revisão antes de publicar"]},
+   {n:"Site que gera clientes",p:"$397",m:0,i:["Página única para captar clientes","Pixel de anúncios instalado","Formulário de contato","3 artigos de SEO"]}
+  ],
+  pNote:"Você não precisa assinar nenhuma ferramenta: produzimos com a nossa licença comercial. Os vídeos entregues são seus para usar no seu negócio.",
+  fKick:"Portfólio", fH2:"Veja o clone em ação",
+  vidLabel:"Vídeo de demonstração do clone digital", watch:"Assista com som", caption:"Este não sou eu. É o meu clone.",
+  l1tag:"Site", l1t:"Site que gera clientes, feito pela AskIvan", l1p:"guiaautoflorida.com, site para quem compra carro na Flórida.", visit:"Visitar o site ↗",
+  l2tag:"Vídeo", l2t:"Anúncio com avatar de IA (20 s, em inglês)", l2p:"Um porta-voz de IA para campanhas de marcas e agências, sem marcar gravação.",
+  rKick:"Regras claras", rH2:"Como trabalhamos, sem letras miúdas",
+  rules:[
+   ["Consentimento obrigatório.","O HeyGen proíbe clonar uma pessoa sem o consentimento dela. Só criamos o clone de quem grava a própria declaração."],
+   ["Aviso de IA.","Plataformas como o YouTube pedem que você avise quando o conteúdo é feito com IA. Ajudamos a marcar do jeito certo."],
+   ["Seu clone, sua decisão.","Ele só é usado nos seus vídeos, com a sua aprovação, e você pode pedir a exclusão quando quiser."],
+   ["Fotos com autorização.","Só usamos as suas fotos (produtos, imóveis, local) depois que você autoriza."],
+   ["Nada vai ao ar sem a sua aprovação.","Você revisa cada vídeo antes de publicar."]
+  ],
+  qH2:"Perguntas frequentes",
+  faq:[
+   ["Preciso aparecer na câmera?","Só em uma gravação curta no início, para criar o seu clone. Depois, os vídeos são feitos sem você gravar de novo."],
+   ["Em quanto tempo recebo?","Nossa meta é entregar em até 3 dias úteis depois que você aprova o roteiro."],
+   ["Preciso assinar alguma ferramenta?","Não. Produzimos com a nossa licença comercial e entregamos os vídeos prontos. Se você preferir ter o clone na sua própria conta, a gente ajuda a configurar."],
+   ["Funciona em outros idiomas?","Sim. O padrão é inglês, e o mesmo clone também apresenta em espanhol ou português quando o seu público pede."]
+  ],
+  zH2:"Quer ver o seu clone em ação?", zSub:"Conte rapidinho sobre o seu negócio e o Ivan responde com um vídeo de teste.",
+  fName:"Nome", fEmail:"E-mail", fBiz:"Tipo de negócio", fPack:"Pacote (opcional)", fMsg:"Mensagem (opcional)", fSend:"Pedir meu vídeo de teste",
+  bizOpts:["Escolha uma opção","Imóveis","Negócio local","Marca pessoal / criador","Agência","Outro"], packNone:"Ainda não sei",
+  fNote:"Usamos seus dados só para responder você.", orWa:"Prefere WhatsApp? Fale com o Ivan ↗", fSent:"Recebido! O Ivan responde no seu e-mail em breve.",
+  questions:"Dúvidas?", terms:"Termos", privacy:"Privacidade"
+},
+en:{
+  title:"AskIvan — AI clone videos for your business",
+  desc:"AI clone videos for businesses and professionals: your digital clone presents your products, listings and updates, no filming needed.",
+  waMsg:"Hi Ivan, I'd like to know about AskIvan's AI clone videos for my business.",
+  badge:"AI video for businesses and professionals",
+  h1:'Your business on video, presented by you — <span class="grad">without recording a video.</span>',
+  lead:"Your digital clone, with your face and your voice, presents your products, listings and updates. More video, more often, without booking a shoot. Based in Miami, delivered anywhere in the US.",
+  cta:"I want a test video", cta2:"See portfolio",
+  chip1:"Real estate listings", chip2:"Local business ads", chip3:"Personal brand content",
+  fine:"No promises of sales or leads: you get ready-to-post videos, in your face and your voice.",
+  hKick:"How it works", hH2:"Three steps, no studio",
+  s1t:"You record once", s1p:"One short video and a consent statement, guided by us. No subscription needed.",
+  s2t:"We build your clone", s2p:"We create your avatar and voice, and you approve the result before any video is made.",
+  s3t:"You send the topic", s3p:"Send the product, listing or update and get ready-to-post videos with captions, usually within 3 business days.",
+  pKick:"Packages", pH2:"Clear prices, starting from", pSub:"Starting prices. The final scope is confirmed with you before we begin.",
+  from:"from", mo:"/month", ask:"Ask for this package", rec:"Most popular",
+  packs:[
+   {n:"Single video",p:"$147",m:0,i:["1 video up to 60 seconds","Script included","Captions included","Vertical and horizontal formats"]},
+   {n:"Ready clone",p:"$197",m:0,i:["Your avatar and voice created","No subscription: produced under our commercial license","1 video included","Guidance for the first recording"]},
+   {n:"Monthly videos",p:"$397",m:1,r:1,i:["4 videos per month","Scripts and captions","Vertical and horizontal formats","Review before publishing"]},
+   {n:"Pro",p:"$797",m:1,i:["12 videos per month","Scripts and captions","Spanish versions on request","Review before publishing"]},
+   {n:"Website that brings clients",p:"$397",m:0,i:["One-page lead site","Ads pixel installed","Contact form","3 SEO articles"]}
+  ],
+  pNote:"You don't need to subscribe to any tool: we produce under our commercial license. The delivered videos are yours to use in your business.",
+  fKick:"Portfolio", fH2:"See the clone in action",
+  vidLabel:"Digital clone demo video", watch:"Watch with sound", caption:"This isn't me. It's my clone.",
+  l1tag:"Website", l1t:"Lead-gen website built by AskIvan", l1p:"guiaautoflorida.com, a site for people buying a car in Florida.", visit:"Visit the site ↗",
+  l2tag:"Video", l2t:"AI avatar ad (20 s)", l2p:"An AI spokesperson for brand and agency campaigns, no shoot needed.",
+  rKick:"Clear rules", rH2:"How we work, no fine print",
+  rules:[
+   ["Consent is required.","HeyGen forbids cloning a person without their consent. We only build the clone of someone who records their own statement."],
+   ["AI disclosure.","Platforms like YouTube ask you to disclose AI-made content. We help you label it the right way."],
+   ["Your clone, your call.","It is only used in your videos, with your approval, and you can ask us to delete it anytime."],
+   ["Photos with permission.","We only use your photos (products, listings, place) after you authorize it."],
+   ["Nothing goes live without your approval.","You review every video before it is published."]
+  ],
+  qH2:"Frequently asked questions",
+  faq:[
+   ["Do I need to be on camera?","Only for one short recording at the start, to create your clone. After that, videos are made without you recording again."],
+   ["How fast will I get it?","Our target is delivery within 3 business days after you approve the script."],
+   ["Do I need to subscribe to any tool?","No. We produce under our commercial license and deliver finished videos. If you'd rather keep the clone on your own account, we'll help you set it up."],
+   ["Can it present in other languages?","Yes. English is the default, and the same clone can also present in Spanish or Portuguese when your audience calls for it."]
+  ],
+  zH2:"Want to see your clone in action?", zSub:"Tell us a little about your business and Ivan will reply with a short test video.",
+  fName:"Name", fEmail:"Email", fBiz:"Type of business", fPack:"Package (optional)", fMsg:"Message (optional)", fSend:"Get my test video",
+  bizOpts:["Choose one","Real estate","Local business","Personal brand / creator","Agency","Other"], packNone:"Not sure yet",
+  fNote:"We only use your info to reply to you.", orWa:"Prefer WhatsApp? Message Ivan ↗", fSent:"Got it! Ivan will reply to your email soon.",
+  questions:"Questions?", terms:"Terms", privacy:"Privacy"
+},
+es:{
+  title:"AskIvan — Videos con clon digital para tu negocio",
+  desc:"Videos con clon digital para empresas y profesionales: tu clon presenta tus productos, anuncios y novedades, sin necesidad de grabar.",
+  waMsg:"Hola Ivan, quiero saber sobre los videos con clon digital de AskIvan para mi negocio.",
+  badge:"Video con IA para empresas y profesionales",
+  h1:'Tu negocio en video, presentado por ti — <span class="grad">sin grabar un video.</span>',
+  lead:"Tu clon digital, con tu rostro y tu voz, presenta tus productos, anuncios y novedades. Más video, con más frecuencia, sin agendar grabaciones. Con base en Miami y entrega en todo EE. UU.",
+  cta:"Quiero un video de prueba", cta2:"Ver portafolio",
+  chip1:"Anuncios inmobiliarios", chip2:"Anuncios de negocios locales", chip3:"Contenido de marca personal",
+  fine:"Sin promesas de ventas ni de clientes potenciales: recibes videos listos para publicar, con tu rostro y tu voz.",
+  hKick:"Cómo funciona", hH2:"Tres pasos, sin estudio",
+  s1t:"Grabas una sola vez", s1p:"Un video corto y una declaración de consentimiento, con nuestra guía. Sin suscribirte a ninguna herramienta.",
+  s2t:"Armamos tu clon", s2p:"Creamos tu avatar y tu voz, y tú apruebas el resultado antes de cualquier video.",
+  s3t:"Envías el tema", s3p:"Envía el producto, anuncio o novedad y recibe videos listos para publicar, con subtítulos, por lo general en hasta 3 días hábiles.",
+  pKick:"Paquetes", pH2:"Precios claros, desde", pSub:"Precios iniciales. El alcance final se confirma contigo antes de empezar.",
+  from:"desde", mo:"/mes", ask:"Pedir este paquete", rec:"El más elegido",
+  packs:[
+   {n:"Video individual",p:"$147",m:0,i:["1 video de hasta 60 segundos","Guion incluido","Subtítulos incluidos","Formatos vertical y horizontal"]},
+   {n:"Clon listo",p:"$197",m:0,i:["Tu avatar y tu voz creados","Sin suscripción: producimos con nuestra licencia comercial","1 video incluido","Guía para la grabación inicial"]},
+   {n:"Videos del mes",p:"$397",m:1,r:1,i:["4 videos al mes","Guiones y subtítulos","Formatos vertical y horizontal","Revisión antes de publicar"]},
+   {n:"Pro",p:"$797",m:1,i:["12 videos al mes","Guiones y subtítulos","Versiones en español a pedido","Revisión antes de publicar"]},
+   {n:"Sitio web que atrae clientes",p:"$397",m:0,i:["Página única para captar clientes","Píxel de anuncios instalado","Formulario de contacto","3 artículos de SEO"]}
+  ],
+  pNote:"No necesitas suscribirte a ninguna herramienta: producimos con nuestra licencia comercial. Los videos entregados son tuyos para usar en tu negocio.",
+  fKick:"Portafolio", fH2:"Mira el clon en acción",
+  vidLabel:"Video de demostración del clon digital", watch:"Ver con sonido", caption:"Este no soy yo. Es mi clon.",
+  l1tag:"Sitio web", l1t:"Sitio web que atrae clientes, hecho por AskIvan", l1p:"guiaautoflorida.com, sitio para quien compra auto en Florida.", visit:"Visitar el sitio ↗",
+  l2tag:"Video", l2t:"Anuncio con avatar de IA (20 s, en inglés)", l2p:"Un vocero de IA para campañas de marcas y agencias, sin agendar grabaciones.",
+  rKick:"Reglas claras", rH2:"Cómo trabajamos, sin letra pequeña",
+  rules:[
+   ["El consentimiento es obligatorio.","HeyGen prohíbe clonar a una persona sin su consentimiento. Solo creamos el clon de quien graba su propia declaración."],
+   ["Aviso de IA.","Plataformas como YouTube piden que avises cuando el contenido está hecho con IA. Te ayudamos a etiquetarlo bien."],
+   ["Tu clon, tu decisión.","Solo se usa en tus videos, con tu aprobación, y puedes pedir que lo eliminemos cuando quieras."],
+   ["Fotos con autorización.","Solo usamos tus fotos (productos, propiedades, local) después de que lo autorices."],
+   ["Nada se publica sin tu aprobación.","Revisas cada video antes de publicarlo."]
+  ],
+  qH2:"Preguntas frecuentes",
+  faq:[
+   ["¿Necesito aparecer en cámara?","Solo en una grabación corta al inicio, para crear tu clon. Después, los videos se hacen sin que grabes de nuevo."],
+   ["¿En cuánto tiempo lo recibo?","Nuestra meta es entregar en hasta 3 días hábiles después de que apruebes el guion."],
+   ["¿Necesito suscribirme a alguna herramienta?","No. Producimos con nuestra licencia comercial y entregamos los videos listos. Si prefieres tener el clon en tu propia cuenta, te ayudamos a configurarlo."],
+   ["¿Funciona en otros idiomas?","Sí. El idioma principal es el inglés, y el mismo clon también presenta en español o portugués cuando tu público lo pide."]
+  ],
+  zH2:"¿Quieres ver tu clon en acción?", zSub:"Cuéntanos brevemente sobre tu negocio e Ivan te responde con un video de prueba.",
+  fName:"Nombre", fEmail:"Correo electrónico", fBiz:"Tipo de negocio", fPack:"Paquete (opcional)", fMsg:"Mensaje (opcional)", fSend:"Pedir mi video de prueba",
+  bizOpts:["Elige una opción","Bienes raíces","Negocio local","Marca personal / creador","Agencia","Otro"], packNone:"Aún no sé",
+  fNote:"Usamos tus datos solo para responderte.", orWa:"¿Prefieres WhatsApp? Escríbele a Ivan ↗", fSent:"¡Recibido! Ivan te responde por correo pronto.",
+  questions:"¿Dudas?", terms:"Términos", privacy:"Privacidad"
+}};
+function store(k,v){try{v===undefined?null:localStorage.setItem(k,v);return localStorage.getItem(k)}catch(e){return null}}
+function mk(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+function setLang(l){
+  if(!T[l]) l="en";
+  const d=T[l];
+  document.documentElement.lang=l;
+  document.title=d.title;
+  document.querySelector('meta[name="description"]').setAttribute("content",d.desc);
+  document.querySelectorAll("[data-i]").forEach(el=>{
+    const v=d[el.dataset.i]; if(v==null) return;
+    if(el.hasAttribute("data-html")) el.innerHTML=v; else el.textContent=v;
+  });
+  document.querySelectorAll("[data-i-aria]").forEach(el=>el.setAttribute("aria-label",d[el.dataset.iAria]));
+  const wa=WA+encodeURIComponent(d.waMsg);
+  document.querySelectorAll("a.wa").forEach(a=>a.href=wa);
+  const packs=document.getElementById("packs");packs.replaceChildren();
+  d.packs.forEach(p=>{
+    const c=mk("article","panel pack"+(p.r?" rec":""));
+    if(p.r) c.append(mk("span","tag",d.rec));
+    c.append(mk("h3",null,p.n),mk("span","from",d.from));
+    const pr=mk("div","price",p.price||p.p); if(p.m){pr.append(mk("small",null,d.mo))}
+    c.append(pr);
+    const ul=mk("ul");p.i.forEach(x=>ul.append(mk("li",null,x)));c.append(ul);
+    const b=mk("a","btn"+(p.r?"":" ghost"),d.ask);b.href="#contact";b.dataset.pack=p.n;b.addEventListener("click",()=>{const ps=document.getElementById("fPackSel");ps.value=p.n});c.append(b);
+    packs.append(c);
+  });
+  const rules=document.getElementById("rules");rules.replaceChildren();
+  d.rules.forEach(r=>{const c=mk("div","panel");const p=mk("p");p.append(mk("b",null,r[0]+" "),document.createTextNode(r[1]));c.append(p);rules.append(c)});
+  const faq=document.getElementById("faqList");faq.replaceChildren();
+  d.faq.forEach(f=>{const dt=mk("details");dt.append(mk("summary",null,f[0]),mk("p",null,f[1]));faq.append(dt)});
+  document.querySelectorAll(".langs button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===l)));
+  const bs=document.getElementById("fBizSel");bs.replaceChildren();
+  d.bizOpts.forEach((o,k)=>{const op=mk("option",null,o);op.value=k?o:"";if(!k){op.disabled=true;op.selected=true}bs.append(op)});
+  const ps=document.getElementById("fPackSel");const keep=ps.value;ps.replaceChildren();
+  const n0=mk("option",null,d.packNone);n0.value="";ps.append(n0);
+  d.packs.forEach(p=>{const op=mk("option",null,p.n+" ("+p.p+(p.m?d.mo:"")+")");op.value=p.n;ps.append(op)});
+  document.getElementById("fLang").value=l;
+  store("askivan_lang",l);
+}
+const qs=new URLSearchParams(location.search);
+let lang=qs.get("lang")||store("askivan_lang");
+if(!lang||!T[lang]){
+  lang=null;
+}
+setLang(lang||"en");
+document.querySelectorAll(".langs button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+document.getElementById("yr").textContent=new Date().getFullYear();
+if(qs.get("sent")==="1"){const m=document.getElementById("fSent");m.hidden=false;document.getElementById("cform").hidden=true}
+
+const vid=document.getElementById("vid"),vcard=document.getElementById("vcard");
+document.getElementById("playBtn").addEventListener("click",()=>{
+  vid.muted=false;vid.controls=true;vid.play().catch(()=>{});vcard.classList.add("playing");
+});
+</script>
+</body>
+</html>

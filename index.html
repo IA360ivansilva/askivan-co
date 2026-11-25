@@ -3,858 +3,347 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AskIvan — AI Avatar System | Domine Avatares com IA</title>
-<meta name="description" content="Master AI avatar creation and discover the best digital opportunities on the market. Método Clone Digital + weekly opportunity radar.">
+<title>AskIvan — Coming soon | Em breve | Muy pronto</title>
+<meta name="description" content="The Método Clone Digital course is being recorded. Join the waitlist and be the first to know when it opens.">
 <meta name="theme-color" content="#08090c">
-<script>document.documentElement.classList.add("js")</script>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://askivan.co/">
-<meta property="og:title" content="AskIvan — AI Avatar System">
-<meta property="og:description" content="Master AI avatar creation — and discover the best digital opportunities on the market.">
+<meta property="og:title" content="AskIvan — Coming soon">
+<meta property="og:description" content="Build a photorealistic digital clone of yourself. The course is being recorded — join the waitlist.">
+<meta property="og:image" content="https://askivan.co/assets/videos/askivan-hero-poster.jpg">
 <link rel="canonical" href="https://askivan.co/">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b0d11'/><text x='50' y='68' font-size='52' font-family='system-ui,sans-serif' font-weight='700' fill='%2338e8a8' text-anchor='middle'>A</text></svg>">
 <style>
 :root{
-  --bg:#08090c;
-  --bg-2:#0d0f14;
-  --surface:rgba(255,255,255,.035);
-  --surface-2:rgba(255,255,255,.06);
-  --line:rgba(255,255,255,.09);
-  --line-2:rgba(255,255,255,.16);
-  --text:#f2f4f8;
-  --muted:#9aa3b2;
-  --accent:#38e8a8;
-  --accent-ink:#090D16;
-  --accent-2:#6c8cff;
-  --radius:18px;
-  --max:1120px;
+  --bg:#08090c;--line:rgba(255,255,255,.09);--line-2:rgba(255,255,255,.16);
+  --surface:rgba(255,255,255,.035);--text:#f2f4f8;--muted:#9aa3b2;
+  --accent:#38e8a8;--accent-ink:#090D16;--accent-2:#6c8cff;--radius:18px;
   --ease:cubic-bezier(.22,.61,.36,1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%}
 body{
-  background:var(--bg);color:var(--text);
+  min-height:100vh;background:var(--bg);color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
-  line-height:1.6;letter-spacing:-.011em;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  line-height:1.6;letter-spacing:-.011em;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  display:flex;flex-direction:column;
 }
 body::before{
   content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
   background:
-    radial-gradient(60rem 40rem at 78% -12%,rgba(56,232,168,.10),transparent 60%),
-    radial-gradient(50rem 36rem at 8% 4%,rgba(108,140,255,.09),transparent 62%);
+    radial-gradient(60rem 40rem at 78% -12%,rgba(56,232,168,.12),transparent 60%),
+    radial-gradient(50rem 36rem at 8% 4%,rgba(108,140,255,.10),transparent 62%);
 }
-img,video{max-width:100%;display:block}
+/* subtle moving grid floor for depth */
+.grid{
+  position:fixed;left:-50%;right:-50%;bottom:-10vh;height:60vh;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(56,232,168,.10) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(56,232,168,.10) 1px,transparent 1px);
+  background-size:64px 64px;
+  transform:perspective(600px) rotateX(62deg);transform-origin:center top;
+  mask-image:linear-gradient(to top,rgba(0,0,0,.9),transparent 85%);
+  -webkit-mask-image:linear-gradient(to top,rgba(0,0,0,.9),transparent 85%);
+  animation:floor 9s linear infinite;
+}
+@keyframes floor{to{background-position:0 64px,0 0}}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
-.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 22px;position:relative;z-index:1}
-.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
 
-/* ---------- header ---------- */
-.site-header{
-  position:sticky;top:0;z-index:50;
-  backdrop-filter:blur(18px) saturate(150%);
-  -webkit-backdrop-filter:blur(18px) saturate(150%);
-  background:rgba(8,9,12,.72);
-  border-bottom:1px solid var(--line);
-}
-.header-inner{display:flex;align-items:center;gap:14px;height:64px}
-.brand{display:flex;align-items:center;gap:9px;font-weight:750;font-size:16.5px;letter-spacing:-.02em;flex-shrink:0}
-.brand-mark{
-  width:27px;height:27px;border-radius:9px;display:grid;place-items:center;
-  background:linear-gradient(150deg,var(--accent),#19b98a);
-  color:var(--accent-ink);font-size:14px;font-weight:800;
-}
-.nav{display:flex;gap:4px;margin-left:auto;align-items:center}
-.nav a{
-  padding:8px 12px;border-radius:9px;font-size:14px;color:var(--muted);
-  transition:color .18s var(--ease),background .18s var(--ease);white-space:nowrap;
-}
-.nav a:hover{color:var(--text);background:var(--surface)}
-.lang{
-  display:flex;gap:2px;padding:3px;border-radius:10px;
-  background:var(--surface);border:1px solid var(--line);flex-shrink:0;
-}
-.lang button{
-  padding:5px 9px;border-radius:7px;font-size:12px;font-weight:700;letter-spacing:.04em;
-  color:var(--muted);transition:all .18s var(--ease);
-}
-.lang button:hover{color:var(--text)}
-.lang button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+header{padding:18px 0}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px}
+.brand-mark{width:30px;height:30px;border-radius:9px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:800;font-size:16px}
+.langs{display:flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:11px;background:var(--surface)}
+.langs button{font-size:12.5px;font-weight:600;padding:6px 10px;border-radius:8px;color:var(--muted)}
+.langs button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
 
-/* ---------- buttons ---------- */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  padding:14px 26px;border-radius:13px;font-weight:680;font-size:15px;
-  transition:transform .18s var(--ease),box-shadow .22s var(--ease),background .18s var(--ease),border-color .18s var(--ease);
-  text-align:center;line-height:1.2;
-}
-.btn:hover{transform:translateY(-2px)}
-.btn:active{transform:translateY(0)}
-.btn-primary{
-  background:linear-gradient(150deg,var(--accent),#22cf95);
-  color:var(--accent-ink);font-weight:800;
-  box-shadow:0 10px 34px -12px rgba(56,232,168,.65);
-}
-/* header CTA lives inside .nav: keep dark high-contrast text + green on hover */
-.nav a.btn-primary,.nav a.btn-primary:hover{color:var(--accent-ink);font-weight:800;background:linear-gradient(150deg,var(--accent),#22cf95)}
-.btn-primary:hover{box-shadow:0 16px 42px -12px rgba(56,232,168,.8)}
-.btn-ghost{
-  background:var(--surface);border:1px solid var(--line-2);color:var(--text);
-}
-.btn-ghost:hover{background:var(--surface-2);border-color:rgba(255,255,255,.28)}
-.btn-lg{padding:16px 32px;font-size:15.5px;border-radius:14px}
-.btn-block{width:100%}
+main{flex:1;display:flex;align-items:center;padding:34px 0 56px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:7px 13px;border:1px solid var(--line-2);border-radius:999px;background:var(--surface);color:#cfd6e2}
+.pulse{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(56,232,168,.7);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(56,232,168,0)}100%{box-shadow:0 0 0 0 rgba(56,232,168,0)}}
+h1{font-size:clamp(34px,5.2vw,58px);line-height:1.06;letter-spacing:-.035em;font-weight:800;margin:20px 0 18px}
+.grad{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(16px,1.6vw,18.5px);color:var(--muted);max-width:34em}
 
-/* ---------- hero ---------- */
-.hero{padding:clamp(38px,6vw,76px) 0 clamp(46px,6vw,80px)}
-.hero-grid{
-  display:grid;grid-template-columns:1.05fr .95fr;
-  gap:clamp(28px,4.5vw,58px);align-items:center;
+form{margin-top:30px;display:flex;gap:10px;max-width:480px}
+input[type=email]{
+  flex:1;min-width:0;padding:15px 16px;border-radius:13px;border:1px solid var(--line-2);
+  background:rgba(255,255,255,.05);color:var(--text);font:inherit;font-size:15.5px;
 }
-.eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:6px 13px 6px 9px;border-radius:999px;
-  background:var(--surface);border:1px solid var(--line);
-  font-size:12px;font-weight:650;letter-spacing:.055em;text-transform:uppercase;color:var(--muted);
-  margin-bottom:20px;
-}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(56,232,168,.18)}
-h1{
-  font-size:clamp(30px,4.6vw,49px);line-height:1.09;letter-spacing:-.033em;font-weight:780;
-  margin-bottom:18px;text-wrap:balance;
-}
-.grad{
-  background:linear-gradient(100deg,var(--accent) 12%,#7df0c6 48%,var(--accent-2) 96%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.lede{font-size:clamp(15px,1.55vw,17.5px);color:var(--muted);max-width:36em;margin-bottom:28px;text-wrap:pretty}
-.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:22px}
-.micro{display:flex;flex-wrap:wrap;gap:7px 18px;font-size:12.5px;color:var(--muted)}
-.micro span{display:inline-flex;align-items:center;gap:6px}
-.micro svg{flex-shrink:0;opacity:.85}
+input[type=email]::placeholder{color:#6f7888}
+input[type=email]:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(56,232,168,.15)}
+.btn{padding:15px 20px;border-radius:13px;background:var(--accent);color:var(--accent-ink);font-weight:700;font-size:15px;white-space:nowrap;transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 10px 30px -10px rgba(56,232,168,.6)}
+.note{margin-top:11px;font-size:13px;color:#7c8594}
+.joined{display:none;margin-top:30px;max-width:480px;padding:16px 18px;border-radius:13px;border:1px solid rgba(56,232,168,.35);background:rgba(56,232,168,.08);font-weight:600}
+body.is-joined form,body.is-joined .note{display:none}
+body.is-joined .joined{display:block}
 
-/* video slot */
-.video-slot{
-  position:relative;border-radius:var(--radius);overflow:hidden;
-  border:1px solid var(--line);background:linear-gradient(165deg,#11141b,#0a0c11 72%);
-  aspect-ratio:16/10;
-  box-shadow:0 28px 70px -30px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.02) inset;
-}
-.video-slot video,.video-slot iframe{width:100%;height:100%;object-fit:cover;border:0}
-.video-ph{
-  position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:26px;
-  background:
-    radial-gradient(70% 70% at 50% 42%,rgba(56,232,168,.13),transparent 70%),
-    repeating-linear-gradient(115deg,rgba(255,255,255,.014) 0 2px,transparent 2px 7px);
-}
-.video-ph-inner{max-width:270px}
-.play-ring{
-  width:64px;height:64px;border-radius:50%;display:grid;place-items:center;margin:0 auto 15px;
-  background:rgba(56,232,168,.11);border:1px solid rgba(56,232,168,.42);color:var(--accent);
-  transition:transform .25s var(--ease),background .25s var(--ease);
-}
-.video-slot:hover .play-ring{transform:scale(1.07);background:rgba(56,232,168,.17)}
-.video-ph strong{display:block;font-size:14.5px;font-weight:680;margin-bottom:5px}
-.video-ph small{display:block;font-size:12.5px;color:var(--muted);line-height:1.5}
-.video-slot.has-video{aspect-ratio:16/9}
-.video-slot.has-video video{object-fit:cover;display:block;background:#000}
-.video-play{
-  position:absolute;inset:0;z-index:3;display:grid;place-items:end center;border:0;padding:0 0 22px;cursor:pointer;
-  background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.55));color:#fff;font:inherit;
-  transition:opacity .25s var(--ease);
-}
-.video-play-pill{
-  display:inline-flex;align-items:center;gap:10px;padding:13px 20px 13px 14px;border-radius:999px;
-  background:var(--accent);color:var(--accent-ink);font-weight:800;font-size:15px;letter-spacing:-.01em;
-  box-shadow:0 14px 40px -12px rgba(56,232,168,.7);transition:transform .2s var(--ease);
-}
-.video-play-pill svg{flex:none}
-.video-play:hover .video-play-pill,.video-play:focus-visible .video-play-pill{transform:scale(1.05)}
-.video-play:focus-visible{outline:2px solid var(--accent);outline-offset:-4px}
-.video-slot.playing .video-play{opacity:0;pointer-events:none}
-.video-badge{
-  position:absolute;top:12px;left:12px;z-index:2;
-  padding:5px 10px;border-radius:7px;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
-  background:rgba(8,9,12,.82);border:1px solid var(--line-2);color:var(--muted);
-  backdrop-filter:blur(8px);
-}
+.coming{margin-top:34px;display:grid;gap:10px;max-width:480px}
+.coming h2{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#7c8594;font-weight:700}
+.coming li{list-style:none;display:flex;gap:11px;align-items:flex-start;color:#d5dbe5;font-size:15px}
+.coming li::before{content:"";flex:none;margin-top:8px;width:7px;height:7px;border-radius:2px;background:var(--accent);transform:rotate(45deg)}
 
-/* ---------- sections ---------- */
-section{position:relative;z-index:1}
-.sec{padding:clamp(50px,7vw,88px) 0;border-top:1px solid var(--line)}
-.sec-head{max-width:640px;margin-bottom:clamp(30px,4vw,46px)}
-.kicker{
-  font-size:11.5px;font-weight:720;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:12px;display:block;
+/* 3D video card — tilts toward the cursor */
+.stage{perspective:1100px}
+.card{
+  position:relative;border-radius:22px;overflow:hidden;border:1px solid var(--line-2);
+  background:#000;aspect-ratio:16/10;transform-style:preserve-3d;
+  transform:rotateY(-9deg) rotateX(4deg);transition:transform .5s var(--ease);
+  box-shadow:0 40px 90px -30px rgba(0,0,0,.9),0 0 0 1px rgba(56,232,168,.08),0 0 80px -20px rgba(56,232,168,.25);
 }
-h2{font-size:clamp(24px,3.3vw,36px);line-height:1.15;letter-spacing:-.028em;font-weight:760;margin-bottom:12px;text-wrap:balance}
-.sec-head p{color:var(--muted);font-size:clamp(14.5px,1.4vw,16px);text-wrap:pretty}
-
-/* product */
-.product-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(24px,3.4vw,46px);align-items:start}
-.features{list-style:none;display:grid;gap:2px}
-.features li{display:flex;gap:13px;padding:13px 0;border-bottom:1px solid var(--line);align-items:flex-start}
-.features li:last-child{border-bottom:0}
-.check{
-  width:21px;height:21px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;margin-top:2px;
-  background:rgba(56,232,168,.13);border:1px solid rgba(56,232,168,.3);color:var(--accent);
+.card video{width:100%;height:100%;object-fit:cover;display:block}
+.card .glare{position:absolute;inset:0;pointer-events:none;background:radial-gradient(40rem 20rem at var(--gx,30%) var(--gy,0%),rgba(255,255,255,.12),transparent 50%)}
+.play{
+  position:absolute;right:16px;bottom:16px;white-space:nowrap;
+  display:flex;align-items:center;gap:9px;padding:11px 18px;border-radius:999px;
+  background:rgba(56,232,168,.92);color:var(--accent-ink);font-weight:700;font-size:14.5px;
+  box-shadow:0 10px 30px -8px rgba(0,0,0,.7);
 }
-.features b{display:block;font-size:14.5px;font-weight:660;margin-bottom:1px}
-.features span{font-size:13.5px;color:var(--muted);line-height:1.5}
-.price-card{
-  border-radius:var(--radius);padding:26px;position:relative;overflow:hidden;
-  background:linear-gradient(168deg,rgba(255,255,255,.07),rgba(255,255,255,.02) 55%);
-  border:1px solid var(--line-2);
-  box-shadow:0 30px 70px -34px rgba(0,0,0,.9);
-}
-.price-card::before{
-  content:"";position:absolute;inset:-1px -1px auto;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(56,232,168,.75),transparent);
-}
-.price-tag{display:flex;align-items:baseline;gap:9px;margin:6px 0 4px}
-.price-tag .cur{font-size:20px;font-weight:600;color:var(--muted)}
-.price-tag .amt{font-size:clamp(42px,5.4vw,54px);font-weight:780;letter-spacing:-.045em;line-height:1}
-.price-tag .per{font-size:12.5px;color:var(--muted);font-weight:500}
-.plan-name{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
-.plan-desc{color:var(--muted);font-size:13.5px;margin:10px 0 20px;line-height:1.55}
-.plan-list{list-style:none;display:grid;gap:9px;margin:0 0 22px;font-size:13.5px}
-.plan-list li{display:flex;gap:9px;align-items:flex-start;color:#cfd6e0}
-.plan-list svg{color:var(--accent);flex-shrink:0;margin-top:3px}
-.plan-note{font-size:11.5px;color:#7d8694;text-align:center;margin-top:13px;line-height:1.55}
-.price-card hr{border:0;border-top:1px solid var(--line);margin:20px 0}
-
-/* affiliate */
-.aff{
-  border-radius:var(--radius);padding:clamp(24px,3.6vw,40px);position:relative;overflow:hidden;
-  background:
-    radial-gradient(90% 130% at 100% 0%,rgba(108,140,255,.15),transparent 58%),
-    linear-gradient(150deg,rgba(255,255,255,.055),rgba(255,255,255,.015));
-  border:1px solid var(--line-2);
-}
-.aff-grid{display:grid;grid-template-columns:1fr auto;gap:clamp(22px,3.4vw,44px);align-items:center}
-.aff-pct{text-align:center;flex-shrink:0}
-.aff-pct .n{
-  font-size:clamp(52px,7.4vw,76px);font-weight:800;line-height:.92;letter-spacing:-.05em;
-  background:linear-gradient(160deg,var(--accent),var(--accent-2));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.aff-pct small{display:block;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:6px;font-weight:650}
-.steps{list-style:none;display:grid;gap:14px;margin:18px 0 0}
-.steps li{display:flex;gap:12px;align-items:flex-start;font-size:13.8px}
-.step-n{
-  width:23px;height:23px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;
-  font-size:11.5px;font-weight:750;background:var(--surface-2);border:1px solid var(--line-2);color:var(--text);margin-top:1px;
-}
-.steps b{font-weight:660}
-.steps span{color:var(--muted)}
+.play svg{width:15px;height:15px}
+.card.playing .play{display:none}
+.caption{margin-top:14px;text-align:center;font-size:13.5px;color:#9aa3b2}
 
 /* radar */
-.radar-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:clamp(24px,3.4vw,36px)}
-.radar-meta{
-  display:inline-flex;align-items:center;gap:7px;font-size:11.5px;color:var(--muted);
-  padding:5px 11px;border-radius:999px;background:var(--surface);border:1px solid var(--line);white-space:nowrap;
-}
-.pulse{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2.4s var(--ease) infinite}
-@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(56,232,168,.5)}50%{opacity:.55;box-shadow:0 0 0 5px rgba(56,232,168,0)}}
+.radar{display:none;flex:none;padding:8px 0 64px;position:relative;z-index:1}
+.radar.is-on{display:block}
+.radar-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:28px}
+.radar-kicker{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.radar h2{font-size:clamp(24px,3.2vw,34px);line-height:1.15;letter-spacing:-.025em;font-weight:800;margin:10px 0 8px;max-width:22em}
+.radar-sub{color:var(--muted);font-size:15.5px;max-width:38em}
+.radar-meta{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);white-space:nowrap}
+.radar-meta i{width:6px;height:6px;border-radius:50%;background:var(--accent)}
 .radar-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{
-  display:flex;flex-direction:column;border-radius:16px;padding:22px;
-  background:linear-gradient(168deg,rgba(255,255,255,.05),rgba(255,255,255,.012));
-  border:1px solid var(--line);
-  transition:transform .22s var(--ease),border-color .22s var(--ease),background .22s var(--ease),box-shadow .22s var(--ease);
-  position:relative;overflow:hidden;
-}
-.card:hover{transform:translateY(-3px);border-color:rgba(56,232,168,.4);background:linear-gradient(168deg,rgba(56,232,168,.06),rgba(255,255,255,.02));box-shadow:0 22px 44px -26px rgba(0,0,0,.9)}
-.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
-.tag{
-  font-size:10.5px;font-weight:720;letter-spacing:.09em;text-transform:uppercase;
-  padding:4px 9px;border-radius:6px;background:rgba(56,232,168,.11);color:var(--accent);border:1px solid rgba(56,232,168,.24);
-}
-.rank{font-size:11px;color:#69717f;font-weight:700;letter-spacing:.05em}
-.card h3{font-size:16.5px;font-weight:700;letter-spacing:-.018em;margin-bottom:7px;line-height:1.3}
-.card p{font-size:13.4px;color:var(--muted);line-height:1.58;margin-bottom:16px;flex:1}
-.card-link{display:inline-flex;align-items:center;gap:6px;font-size:13.2px;font-weight:660;color:var(--accent);margin-top:auto}
-.card-link svg{transition:transform .2s var(--ease)}
-.card:hover .card-link svg{transform:translate(3px,-3px)}
-.card-loading{opacity:.5}
+.rcard{display:flex;flex-direction:column;border-radius:var(--radius);padding:22px;background:var(--surface);border:1px solid var(--line);transition:transform .2s var(--ease),border-color .2s var(--ease)}
+.rcard:hover{transform:translateY(-3px);border-color:rgba(56,232,168,.4)}
+.rtag{align-self:flex-start;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:4px 9px;border-radius:6px;background:rgba(56,232,168,.11);color:var(--accent);border:1px solid rgba(56,232,168,.24)}
+.rcard h3{font-size:20px;letter-spacing:-.02em;margin:14px 0 8px}
+.rcard p{color:var(--muted);font-size:14.5px;flex:1}
+.rlink{margin-top:16px;font-size:14px;font-weight:700;color:var(--accent);display:inline-flex;align-items:center;gap:6px}
 
-/* footer */
-.site-footer{border-top:1px solid var(--line);padding:38px 0 46px;margin-top:20px}
-.foot-grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-start}
-.foot-brand{font-weight:750;font-size:15.5px;display:flex;align-items:center;gap:9px;margin-bottom:9px}
-.foot-note{font-size:12.5px;color:var(--muted);max-width:30ch;line-height:1.6}
-.foot-links{display:flex;flex-wrap:wrap;gap:9px 22px;font-size:13px}
-.foot-links a{color:var(--muted);transition:color .18s var(--ease)}
-.foot-links a:hover{color:var(--accent)}
-.legal{font-size:11.5px;color:#666e7b;margin-top:28px;padding-top:20px;border-top:1px solid var(--line);line-height:1.6}
+footer{border-top:1px solid var(--line);padding:22px 0;position:relative;z-index:1}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:13.5px;color:#7c8594}
+footer a{color:#cfd6e2}
+footer a:hover{color:var(--accent)}
 
-
-/* reveal — content is visible by default; only the .js class hides it first,
-   so a failed script can never leave the page blank. */
-.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
-.js .reveal.in{opacity:1;transform:none}
-
-/* ---------- responsive ---------- */
-@media (max-width:900px){
-  .hero-grid,.product-grid{grid-template-columns:1fr}
-  .hero-grid{gap:32px}
-  .video-slot{order:-1;aspect-ratio:16/11}
+@media (max-width:880px){
+  .hero{grid-template-columns:1fr;gap:38px}
+  .stage{order:-1}
+  .card{transform:none}
+  main{padding-top:10px}
   .radar-grid{grid-template-columns:1fr}
-  .aff-grid{grid-template-columns:1fr;text-align:left}
-  .aff-pct{text-align:left}
-  .nav a[data-nav]{display:none}
+  .radar{padding-bottom:44px}
 }
-@media (max-width:600px){
-  .video-play{padding-bottom:16px}
-  .video-play-pill{padding:10px 16px 10px 11px;font-size:14px}
-  .header-inner{height:58px;gap:10px}
-  .brand{font-size:15px}
-  .btn-header{display:none}
-  .lang button{padding:8px 12px;min-height:40px;min-width:40px}
-  .wrap{padding:0 17px}
-  .hero-cta{flex-direction:column}
-  .hero-cta .btn{width:100%}
-  .price-card{padding:22px}
-  .video-slot{aspect-ratio:4/3}
+@media (max-width:480px){
+  .play{right:12px;bottom:12px;padding:9px 14px;font-size:13.5px}
+  form{flex-direction:column}
+  .btn{width:100%}
 }
 @media (prefers-reduced-motion:reduce){
-  *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
-  .reveal{opacity:1;transform:none}
+  .grid,.pulse{animation:none}
+  .card{transition:none}
 }
 </style>
 </head>
 <body>
+<div class="grid" aria-hidden="true"></div>
 
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a href="#top" class="brand" aria-label="AskIvan">
-      <span class="brand-mark" aria-hidden="true">A</span>
-      <span>AskIvan</span>
-    </a>
-    <nav class="nav" aria-label="Main">
-      <a href="#product" data-nav data-t="nav.product">Product</a>
-      <a href="#affiliate" data-nav data-t="nav.affiliate">Affiliate</a>
-      <a href="#radar" data-nav data-t="nav.radar">Radar</a>
-      <a href="#buy" class="btn btn-primary btn-header" style="padding:9px 17px;font-size:13.5px;border-radius:10px;margin-left:6px">
-        <span data-t="nav.buy">Get it — $37</span>
-      </a>
-      <div class="lang" role="group" aria-label="Language">
-        <button type="button" data-lang="en" aria-pressed="true">EN</button>
-        <button type="button" data-lang="pt" aria-pressed="false">PT</button>
-        <button type="button" data-lang="es" aria-pressed="false">ES</button>
-      </div>
-    </nav>
+<header>
+  <div class="wrap">
+    <a class="brand" href="https://askivan.co/" aria-label="AskIvan"><span class="brand-mark">A</span>AskIvan</a>
+    <div class="langs" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="pt" aria-pressed="false">PT</button>
+      <button type="button" data-lang="es" aria-pressed="false">ES</button>
+    </div>
   </div>
 </header>
 
-<main id="top">
+<main>
+  <div class="wrap hero">
+    <div>
+      <span class="badge"><span class="pulse"></span><span data-i="badge">Coming soon</span></span>
+      <h1 data-i="h1" data-html>The <span class="grad">Clone Digital</span> course is being recorded.</h1>
+      <p class="lead" data-i="lead">Learn to build a photorealistic digital clone of yourself (face, voice and presence) from zero, even with no experience. Join the waitlist and be the first to know when it opens.</p>
 
-  <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <span class="eyebrow"><span class="dot" aria-hidden="true"></span><span data-t="hero.eyebrow">AI Avatar System</span></span>
-        <h1><span data-t="hero.h1a">Master</span> <span class="grad" data-t="hero.h1b">AI Avatar Creation</span> <span data-t="hero.h1c">— and discover the best digital opportunities on the market.</span></h1>
-        <p class="lede" data-t="hero.lede">Build a photorealistic digital clone of yourself — face, voice and presence — and use it to sell, teach and scale. No camera crew. No studio.</p>
-        <div class="hero-cta">
-          <a href="#buy" class="btn btn-primary btn-lg">
-            <span data-t="hero.cta1">Get the Method — $37</span>
-          </a>
-          <a href="#affiliate" class="btn btn-ghost btn-lg">
-            <span data-t="hero.cta2">Earn 50% as an affiliate</span>
-          </a>
-        </div>
-        <div class="micro">
-          <span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            <span data-t="hero.m1">Instant access</span>
-          </span>
-          <span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            <span data-t="hero.m2">Lifetime updates</span>
-          </span>
-          <span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            <span data-t="hero.m3">English · Portuguese · Spanish</span>
-          </span>
-        </div>
-      </div>
+      <form action="https://formsubmit.co/ia360ivansilva@gmail.com" method="POST">
+        <label class="sr" for="email" data-i="label">Your email</label>
+        <input id="email" type="email" name="email" required autocomplete="email" placeholder="Your best email" data-i-ph="ph">
+        <input type="hidden" name="language" id="langField" value="en">
+        <input type="hidden" name="_subject" value="AskIvan: new waitlist signup">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" id="nextField" value="https://askivan.co/?joined=1">
+        <button class="btn" type="submit" data-i="cta">Notify me</button>
+      </form>
+      <p class="note" data-i="note">No spam. Just the launch notice.</p>
+      <div class="joined" role="status" data-i="joined">You're on the list! You'll be the first to know.</div>
 
-      <!-- HERO VIDEO SLOT — set CONFIG.heroVideo below (mp4 URL or video ID) and it renders automatically -->
-      <div class="video-slot" id="heroVideoSlot">
-        <span class="video-badge" data-t="hero.videobadge">Avatar preview</span>
-        <div class="video-ph">
-          <div class="video-ph-inner">
-            <div class="play-ring" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72L19 12z"/></svg>
-            </div>
-            <strong data-t="hero.videotitle">Your avatar presents this portal</strong>
-            <small data-t="hero.videosub">Video arriving soon — this slot is ready to receive it.</small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PRODUCT ============ -->
-  <section class="sec" id="product">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <span class="kicker" data-t="prod.kicker">Main product</span>
-        <h2><span data-t="prod.h2a">Método Clone Digital</span> <span style="color:var(--muted);font-weight:600">/ AI Avatar System</span></h2>
-        <p data-t="prod.sub">The complete path from zero to a digital clone that looks and sounds like you — and a production line that turns one idea into a week of content.</p>
-      </div>
-
-      <div class="product-grid">
-        <ul class="features reveal">
-          <li>
-            <span class="check" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <div><b data-t="prod.f1t">This isn't me</b><span data-t="prod.f1d">My clone reveals itself in front of you: living proof you can be on video without recording.</span></div>
-          </li>
-          <li>
-            <span class="check" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <div><b data-t="prod.f2t">The real cost: open source vs paid</b><span data-t="prod.f2d">The numbers side by side, with the date on screen, so you don't waste money.</span></div>
-          </li>
-          <li>
-            <span class="check" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <div><b data-t="prod.f3t">Recording your base video on your phone</b><span data-t="prod.f3d">Light, framing and audio done right, so your clone doesn't look like AI.</span></div>
-          </li>
-          <li>
-            <span class="check" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <div><b data-t="prod.f4t">Creating your clone and your voice</b><span data-t="prod.f4d">Your face and your voice cloned step by step, inside the real tool.</span></div>
-          </li>
-          <li>
-            <span class="check" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <div><b data-t="prod.f5t">Your first video in 15 minutes</b><span data-t="prod.f5d">From text to finished video without turning on a camera.</span></div>
-          </li>
-          <li>
-            <span class="check" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-            <div><b data-t="prod.f6t">Reverse-engineering a viral avatar video</b><span data-t="prod.f6d">We take a viral avatar video apart, piece by piece, to see what made it work.</span></div>
-          </li>
+      <div class="coming">
+        <h2 data-i="comingT">What's coming</h2>
+        <ul>
+          <li data-i="c1">Your clone and your voice, step by step</li>
+          <li data-i="c2">Your first video without turning on a camera</li>
+          <li data-i="c3">In English, Portuguese and Spanish</li>
         </ul>
-
-        <div class="price-card reveal" id="buy">
-          <span class="plan-name" data-t="prod.plan">Clone Digital — full access</span>
-          <div class="price-tag">
-            <span class="cur">$</span><span class="amt">37</span>
-            <span class="per" data-t="prod.once">one-time</span>
-          </div>
-          <p class="plan-desc" data-t="prod.desc">Everything you need to build, produce and publish with your own AI avatar.</p>
-          <hr>
-          <ul class="plan-list">
-            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-t="prod.p1">The full Método Clone Digital</span></li>
-            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-t="prod.p2">Step-by-step tool stack</span></li>
-            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-t="prod.p3">Production templates</span></li>
-            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-t="prod.p4">Lifetime updates</span></li>
-            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-t="prod.p5">Affiliate access: 50% per sale</span></li>
-          </ul>
-          <button type="button" class="btn btn-primary btn-block btn-lg" id="buyBtn" data-checkout="whop">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            <span data-t="prod.cta">Buy now — $37</span>
-          </button>
-          <p class="plan-note" data-t="prod.note">Secure checkout. Access released immediately after payment.</p>
-          <p class="plan-note" style="margin-top:8px">
-            <span data-t="prod.termsA">By buying you agree to the</span>
-            <a href="/terms/" data-t="nav.terms" style="color:var(--accent)">Terms of Use</a>
-            <span data-t="prod.termsB">and the</span>
-            <a href="/privacy/" data-t="nav.privacy" style="color:var(--accent)">Privacy Policy</a>.
-          </p>
-        </div>
       </div>
     </div>
-  </section>
 
-  <!-- ============ AFFILIATE ============ -->
-  <section class="sec" id="affiliate">
-    <div class="wrap">
-      <div class="aff reveal">
-        <div class="aff-grid">
-          <div>
-            <span class="kicker" data-t="aff.kicker">Affiliate program</span>
-            <h2 style="margin-bottom:10px" data-t="aff.h2">Recommend it. Keep half.</h2>
-            <p style="color:var(--muted);font-size:14.5px;max-width:40ch" data-t="aff.sub">Every sale you send earns 50% commission. Paid automatically, tracked for you — no inventory, no support tickets.</p>
-            <ul class="steps">
-              <li><span class="step-n">1</span><div><b data-t="aff.s1t">Get your link</b> <span data-t="aff.s1d">— one click, free to join.</span></div></li>
-              <li><span class="step-n">2</span><div><b data-t="aff.s2t">Share it</b> <span data-t="aff.s2d">— your audience, your socials, your clients.</span></div></li>
-              <li><span class="step-n">3</span><div><b data-t="aff.s3t">Get paid 50%</b> <span data-t="aff.s3d">— automatically on every completed sale.</span></div></li>
-            </ul>
-          </div>
-          <div class="aff-pct">
-            <div class="n">50%</div>
-            <small data-t="aff.pct">commission</small>
-            <button type="button" class="btn btn-ghost" id="affBtn" style="margin-top:18px;width:100%" data-affiliate="whop">
-              <span data-t="aff.cta">Join as affiliate</span>
-            </button>
-          </div>
-        </div>
+    <div class="stage">
+      <div class="card" id="card">
+        <video id="vid" src="assets/videos/askivan-hero-avatar.mp4" poster="assets/videos/askivan-hero-poster.jpg" playsinline preload="metadata"></video>
+        <div class="glare"></div>
+        <button class="play" type="button" id="playBtn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span data-i="watch">Watch with sound</span>
+        </button>
       </div>
+      <p class="caption" data-i="caption">This isn't me. It's my clone.</p>
     </div>
-  </section>
-
-  <!-- ============ RADAR ============ -->
-  <section class="sec" id="radar">
-    <div class="wrap">
-      <div class="radar-head">
-        <div class="sec-head" style="margin-bottom:0">
-          <span class="kicker" data-t="radar.kicker">Opportunity radar</span>
-          <h2 data-t="radar.h2">The 3 digital tools worth testing this week</h2>
-          <p data-t="radar.sub">Hand-picked every week. Real tools, tested before they land here — no filler, no hype.</p>
-        </div>
-        <span class="radar-meta">
-          <span class="pulse" aria-hidden="true"></span>
-          <span data-t="radar.updated">Updated weekly by Hermes</span>
-        </span>
-      </div>
-      <div class="radar-grid" id="radarGrid" aria-live="polite"></div>
-    </div>
-  </section>
-
+  </div>
 </main>
 
-<footer class="site-footer">
+<section class="radar" id="radar" aria-labelledby="radarH">
   <div class="wrap">
-    <div class="foot-grid">
+    <div class="radar-head">
       <div>
-        <div class="foot-brand"><span class="brand-mark" aria-hidden="true">A</span> AskIvan</div>
-        <p class="foot-note" data-t="foot.note">AI avatars, automation and digital opportunity — built in South Florida.</p>
+        <span class="radar-kicker" data-i="rKicker">Opportunity radar</span>
+        <h2 id="radarH" data-i="rH2">The 3 digital tools worth testing this week</h2>
+        <p class="radar-sub" data-i="rSub">Hand-picked every week. Real tools, tested before they land here. No filler, no hype.</p>
       </div>
-      <div class="foot-links">
-        <a href="#product" data-t="nav.product">Product</a>
-        <a href="#affiliate" data-t="nav.affiliate">Affiliate</a>
-        <a href="#radar" data-t="nav.radar">Radar</a>
-        <a href="/terms/" data-t="nav.terms">Terms of Use</a>
-        <a href="/privacy/" data-t="nav.privacy">Privacy Policy</a>
-        <a href="https://wa.me/19548600537" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-        <a href="mailto:ia360ivansilva@gmail.com">Email</a>
-      </div>
+      <span class="radar-meta"><i aria-hidden="true"></i><span id="radarMeta"></span></span>
     </div>
-    <p class="legal" data-t="foot.legal">© 2026 AskIvan. All rights reserved. Results depend on your own execution. This site is not affiliated with or endorsed by any third-party tool mentioned in the radar.</p>
+    <div class="radar-grid" id="radarGrid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> AskIvan</span>
+    <span><span data-i="questions">Questions?</span> <a href="https://wa.me/19548600537" target="_blank" rel="noopener">WhatsApp</a> · <a href="mailto:ia360ivansilva@gmail.com">ia360ivansilva@gmail.com</a> · <a href="/terms/" data-i="terms">Terms</a> · <a href="/privacy/" data-i="privacy">Privacy</a></span>
   </div>
 </footer>
 
-
 <script>
-/* ============================================================
-   CONFIG — set these to go live. Empty string = safe placeholder.
-   ============================================================ */
-const CONFIG = {
-  checkoutUrl:  "https://whop.com/checkout/plan_tkGHDGOIxB9V3",  // Whop checkout ($37)
-  affiliateUrl: "https://whop.com/askivan/affiliates",        // Whop affiliate portal (50%)
-  heroVideo:    "assets/videos/askivan-hero-avatar.mp4",   // mp4 path or "https://youtu.be/VIDEO_ID"
-  heroPoster:   "assets/videos/askivan-hero-poster.jpg",
-  radarPath:    "radar.json",
-  defaultLang:  "en"     // used only if the browser language is not EN/PT/ES
-};
-
-/* ============================================================
-   i18n
-   ============================================================ */
-const I18N = {
-  en: {
-    "nav.product":"Product","nav.affiliate":"Affiliate","nav.radar":"Radar","nav.buy":"Get it — $37","nav.terms":"Terms of Use","nav.privacy":"Privacy Policy",
-    "hero.eyebrow":"AI Avatar System",
-    "hero.h1a":"Master","hero.h1b":"AI Avatar Creation","hero.h1c":"— and discover the best digital opportunities on the market.",
-    "hero.lede":"Build a photorealistic digital clone of yourself — face, voice and presence — and use it to sell, teach and scale. No camera crew. No studio.",
-    "hero.cta1":"Get the Method — $37","hero.cta2":"Earn 50% as an affiliate",
-    "hero.m1":"Instant access","hero.m2":"Lifetime updates","hero.m3":"English · Portuguese · Spanish",
-    "hero.videobadge":"Avatar preview",
-    "hero.videotitle":"Your avatar presents this portal",
-    "hero.videosub":"Video arriving soon — this slot is ready to receive it.",
-    "hero.watch":"Watch with sound",
-    "prod.kicker":"Main product","prod.h2a":"Método Clone Digital",
-    "prod.sub":"The complete path from zero to a digital clone that looks and sounds like you — and a production line that turns one idea into a week of content.",
-    "prod.f1t":"This isn't me","prod.f1d":"My clone reveals itself in front of you: living proof you can be on video without recording.",
-    "prod.f2t":"The real cost: open source vs paid","prod.f2d":"The numbers side by side, with the date on screen, so you don't waste money.",
-    "prod.f3t":"Recording your base video on your phone","prod.f3d":"Light, framing and audio done right, so your clone doesn't look like AI.",
-    "prod.f4t":"Creating your clone and your voice","prod.f4d":"Your face and your voice cloned step by step, inside the real tool.",
-    "prod.f5t":"Your first video in 15 minutes","prod.f5d":"From text to finished video without turning on a camera.",
-    "prod.f6t":"Reverse-engineering a viral avatar video","prod.f6d":"We take a viral avatar video apart, piece by piece, to see what made it work.",
-    "prod.plan":"Clone Digital — full access","prod.once":"one-time",
-    "prod.desc":"Everything you need to build, produce and publish with your own AI avatar.",
-    "prod.p1":"The full Método Clone Digital","prod.p2":"Step-by-step tool stack","prod.p3":"Production templates","prod.p4":"Lifetime updates","prod.p5":"Affiliate access: 50% per sale",
-    "prod.cta":"Buy now — $37","prod.note":"Secure checkout. Access released immediately after payment.","prod.termsA":"By buying you agree to the","prod.termsB":"and the",
-    "aff.kicker":"Affiliate program","aff.h2":"Recommend it. Keep half.",
-    "aff.sub":"Every sale you send earns 50% commission. Paid automatically, tracked for you — no inventory, no support tickets.",
-    "aff.s1t":"Get your link","aff.s1d":"— one click, free to join.",
-    "aff.s2t":"Share it","aff.s2d":"— your audience, your socials, your clients.",
-    "aff.s3t":"Get paid 50%","aff.s3d":"— automatically on every completed sale.",
-    "aff.pct":"commission","aff.cta":"Join as affiliate",
-    "radar.kicker":"Opportunity radar","radar.h2":"The 3 digital tools worth testing this week",
-    "radar.sub":"Hand-picked every week. Real tools, tested before they land here — no filler, no hype.",
-    "radar.updated":"Updated weekly by Hermes",
-    "radar.visit":"Open tool","radar.week":"Week of",
-    "foot.note":"AI avatars, automation and digital opportunity — built in South Florida.",
-    "foot.legal":"© 2026 AskIvan. All rights reserved. Results depend on your own execution. This site is not affiliated with or endorsed by any third-party tool mentioned in the radar."
+const T = {
+  en:{
+    badge:"Coming soon",
+    h1:'The <span class="grad">Clone Digital</span> course is being recorded.',
+    lead:"Learn to build a photorealistic digital clone of yourself (face, voice and presence) from zero, even with no experience. Join the waitlist and be the first to know when it opens.",
+    label:"Your email", ph:"Your best email", cta:"Notify me",
+    note:"No spam. Just the launch notice.",
+    joined:"You're on the list! You'll be the first to know.",
+    comingT:"What's coming",
+    c1:"Your clone and your voice, step by step",
+    c2:"Your first video without turning on a camera",
+    c3:"In English, Portuguese and Spanish",
+    watch:"Watch with sound", caption:"This isn't me. It's my clone.",
+    questions:"Questions?", terms:"Terms", privacy:"Privacy",
+    title:"AskIvan — Coming soon",
+    rKicker:"Opportunity radar", rH2:"The 3 digital tools worth testing this week", rSub:"Hand-picked every week. Real tools, tested before they land here. No filler, no hype.", rUpd:"Updated weekly by Hermes", rVisit:"Open tool", rWeek:"Week of"
   },
-
-  pt: {
-    "nav.product":"Produto","nav.affiliate":"Afiliados","nav.radar":"Radar","nav.buy":"Quero — $37","nav.terms":"Termos de Uso","nav.privacy":"Política de Privacidade",
-    "hero.eyebrow":"Sistema de Avatar IA",
-    "hero.h1a":"Domine a","hero.h1b":"Criação de Avatares com IA","hero.h1c":"e descubra as melhores oportunidades digitais do mercado.",
-    "hero.lede":"Construa um clone digital seu, fotorrealista — rosto, voz e presença — e use para vender, ensinar e escalar. Sem equipe de filmagem. Sem estúdio.",
-    "hero.cta1":"Quero o Método — $37","hero.cta2":"Ganhar 50% como afiliado",
-    "hero.m1":"Acesso imediato","hero.m2":"Atualizações incluídas","hero.m3":"Inglês · Português · Espanhol",
-    "hero.videobadge":"Prévia do avatar",
-    "hero.videotitle":"Seu avatar apresenta este portal",
-    "hero.videosub":"O vídeo entra em breve — este espaço já está pronto para receber.",
-    "hero.watch":"Assistir com som",
-    "prod.kicker":"Produto principal","prod.h2a":"Método Clone Digital",
-    "prod.sub":"O caminho completo do zero até um clone digital que parece e soa como você — e uma linha de produção que transforma uma ideia em uma semana de conteúdo.",
-    "prod.f1t":"Esse não sou eu","prod.f1d":"Meu clone se revela na sua frente: a prova viva de que dá para aparecer em vídeo sem gravar.",
-    "prod.f2t":"O custo real: open source x pago","prod.f2d":"A conta lado a lado, com a data na tela, para você não gastar à toa.",
-    "prod.f3t":"Gravar o vídeo base com o celular","prod.f3d":"Luz, enquadramento e áudio do jeito certo, para o clone não sair com cara de IA.",
-    "prod.f4t":"Criar o clone e a voz","prod.f4d":"Seu rosto e sua voz clonados passo a passo, dentro da ferramenta real.",
-    "prod.f5t":"Primeiro vídeo em 15 minutos","prod.f5d":"Do texto ao vídeo pronto, sem ligar a câmera.",
-    "prod.f6t":"Engenharia reversa de um vídeo viral de avatar","prod.f6d":"A gente desmonta um vídeo viral de avatar, peça por peça, para entender o que fez ele funcionar.",
-    "prod.plan":"Clone Digital — acesso completo","prod.once":"pagamento único",
-    "prod.desc":"Tudo o que você precisa para construir, produzir e publicar com o seu próprio avatar de IA.",
-    "prod.p1":"O Método Clone Digital completo","prod.p2":"Stack de ferramentas passo a passo","prod.p3":"Templates de produção","prod.p4":"Atualizações incluídas","prod.p5":"Acesso ao programa de afiliados: 50% por venda",
-    "prod.cta":"Comprar agora — $37","prod.note":"Pagamento seguro. Acesso liberado logo após a confirmação.","prod.termsA":"Ao comprar, você concorda com os","prod.termsB":"e com a",
-    "aff.kicker":"Programa de afiliados","aff.h2":"Indique. Fique com metade.",
-    "aff.sub":"Cada venda que você traz paga 50% de comissão. Pago automaticamente, com rastreamento — sem estoque, sem suporte.",
-    "aff.s1t":"Pegue seu link","aff.s1d":"— um clique, entrada grátis.",
-    "aff.s2t":"Compartilhe","aff.s2d":"— sua audiência, suas redes, seus clientes.",
-    "aff.s3t":"Receba 50%","aff.s3d":"— automaticamente em cada venda concluída.",
-    "aff.pct":"de comissão","aff.cta":"Quero ser afiliado",
-    "radar.kicker":"Radar de oportunidades","radar.h2":"As 3 ferramentas digitais que valem teste nesta semana",
-    "radar.sub":"Selecionadas toda semana. Ferramentas reais, testadas antes de entrar aqui — sem enrolação, sem hype.",
-    "radar.updated":"Atualizado toda semana pelo Hermes",
-    "radar.visit":"Abrir ferramenta","radar.week":"Semana de",
-    "foot.note":"Avatares de IA, automação e oportunidade digital — feito no Sul da Flórida.",
-    "foot.legal":"© 2026 AskIvan. Todos os direitos reservados. Os resultados dependem da sua própria execução. Este site não é afiliado nem endossado por nenhuma ferramenta de terceiros citada no radar."
+  pt:{
+    badge:"Em breve",
+    h1:'O curso <span class="grad">Clone Digital</span> está sendo gravado.',
+    lead:"Aprenda a criar um clone digital realista de você (rosto, voz e presença) do zero, mesmo sem experiência. Entre na lista de espera e seja o primeiro a saber quando abrir.",
+    label:"Seu e-mail", ph:"Seu melhor e-mail", cta:"Quero ser avisado",
+    note:"Sem spam. Só o aviso de abertura.",
+    joined:"Pronto! Você está na lista. Vai ser o primeiro a saber.",
+    comingT:"O que vem aí",
+    c1:"Seu clone e sua voz, passo a passo",
+    c2:"Seu primeiro vídeo sem ligar a câmera",
+    c3:"Em português, inglês e espanhol",
+    watch:"Assista com som", caption:"Isso não sou eu. É o meu clone.",
+    questions:"Dúvidas?", terms:"Termos", privacy:"Privacidade",
+    title:"AskIvan — Em breve",
+    rKicker:"Radar de oportunidades", rH2:"As 3 ferramentas digitais que valem teste nesta semana", rSub:"Selecionadas toda semana. Ferramentas reais, testadas antes de entrar aqui. Sem enrolação, sem hype.", rUpd:"Atualizado toda semana pelo Hermes", rVisit:"Abrir ferramenta", rWeek:"Semana de"
   },
-
-  es: {
-    "nav.product":"Producto","nav.affiliate":"Afiliados","nav.radar":"Radar","nav.buy":"Quiero — $37","nav.terms":"Términos de Uso","nav.privacy":"Política de Privacidad",
-    "hero.eyebrow":"Sistema de Avatar IA",
-    "hero.h1a":"Domina la","hero.h1b":"Creación de Avatares con IA","hero.h1c":"y descubre las mejores oportunidades digitales del mercado.",
-    "hero.lede":"Construye un clon digital tuyo, fotorrealista — rostro, voz y presencia — y úsalo para vender, enseñar y escalar. Sin equipo de filmación. Sin estudio.",
-    "hero.cta1":"Quiero el Método — $37","hero.cta2":"Ganar 50% como afiliado",
-    "hero.m1":"Acceso inmediato","hero.m2":"Actualizaciones incluidas","hero.m3":"Inglés · Portugués · Español",
-    "hero.videobadge":"Vista previa del avatar",
-    "hero.videotitle":"Tu avatar presenta este portal",
-    "hero.videosub":"El video llega pronto — este espacio ya está listo para recibirlo.",
-    "hero.watch":"Ver con sonido",
-    "prod.kicker":"Producto principal","prod.h2a":"Método Clone Digital",
-    "prod.sub":"El camino completo desde cero hasta un clon digital que se ve y suena como tú — y una línea de producción que convierte una idea en una semana de contenido.",
-    "prod.f1t":"Este no soy yo","prod.f1d":"Mi clon se revela frente a ti: la prueba viva de que puedes salir en video sin grabar.",
-    "prod.f2t":"El costo real: open source vs pago","prod.f2d":"Los números lado a lado, con la fecha en pantalla, para que no gastes de más.",
-    "prod.f3t":"Grabar el video base con el celular","prod.f3d":"Luz, encuadre y audio bien hechos, para que tu clon no parezca IA.",
-    "prod.f4t":"Crear tu clon y tu voz","prod.f4d":"Tu rostro y tu voz clonados paso a paso, dentro de la herramienta real.",
-    "prod.f5t":"Tu primer video en 15 minutos","prod.f5d":"Del texto al video terminado sin encender la cámara.",
-    "prod.f6t":"Ingeniería inversa de un video viral de avatar","prod.f6d":"Desarmamos un video viral de avatar, pieza por pieza, para ver qué lo hizo funcionar.",
-    "prod.plan":"Clone Digital — acceso completo","prod.once":"pago único",
-    "prod.desc":"Todo lo que necesitas para construir, producir y publicar con tu propio avatar de IA.",
-    "prod.p1":"El Método Clone Digital completo","prod.p2":"Stack de herramientas paso a paso","prod.p3":"Plantillas de producción","prod.p4":"Actualizaciones incluidas","prod.p5":"Acceso al programa de afiliados: 50% por venta",
-    "prod.cta":"Comprar ahora — $37","prod.note":"Pago seguro. Acceso liberado justo después del pago.","prod.termsA":"Al comprar aceptas los","prod.termsB":"y la",
-    "aff.kicker":"Programa de afiliados","aff.h2":"Recomiéndalo. Quédate con la mitad.",
-    "aff.sub":"Cada venta que traigas gana 50% de comisión. Pagado automáticamente y con seguimiento — sin inventario, sin soporte.",
-    "aff.s1t":"Obtén tu enlace","aff.s1d":"— un clic, gratis para unirte.",
-    "aff.s2t":"Compártelo","aff.s2d":"— tu audiencia, tus redes, tus clientes.",
-    "aff.s3t":"Cobra el 50%","aff.s3d":"— automáticamente en cada venta completada.",
-    "aff.pct":"de comisión","aff.cta":"Quiero ser afiliado",
-    "radar.kicker":"Radar de oportunidades","radar.h2":"Las 3 herramientas digitales que vale la pena probar esta semana",
-    "radar.sub":"Seleccionadas cada semana. Herramientas reales, probadas antes de llegar aquí — sin relleno, sin hype.",
-    "radar.updated":"Actualizado cada semana por Hermes",
-    "radar.visit":"Abrir herramienta","radar.week":"Semana del",
-    "foot.note":"Avatares de IA, automatización y oportunidad digital — hecho en el sur de Florida.",
-    "foot.legal":"© 2026 AskIvan. Todos los derechos reservados. Los resultados dependen de tu propia ejecución. Este sitio no está afiliado ni respaldado por ninguna herramienta de terceros mencionada en el radar."
+  es:{
+    badge:"Muy pronto",
+    h1:'El curso <span class="grad">Clone Digital</span> se está grabando.',
+    lead:"Aprende a crear un clon digital realista de ti (rostro, voz y presencia) desde cero, incluso sin experiencia. Únete a la lista de espera y sé el primero en saber cuándo abre.",
+    label:"Tu correo", ph:"Tu mejor correo", cta:"Avísame",
+    note:"Sin spam. Solo el aviso de apertura.",
+    joined:"¡Listo! Estás en la lista. Serás el primero en saberlo.",
+    comingT:"Lo que viene",
+    c1:"Tu clon y tu voz, paso a paso",
+    c2:"Tu primer video sin encender la cámara",
+    c3:"En español, inglés y portugués",
+    watch:"Ver con sonido", caption:"Este no soy yo. Es mi clon.",
+    questions:"¿Dudas?", terms:"Términos", privacy:"Privacidad",
+    title:"AskIvan — Muy pronto",
+    rKicker:"Radar de oportunidades", rH2:"Las 3 herramientas digitales que vale la pena probar esta semana", rSub:"Seleccionadas cada semana. Herramientas reales, probadas antes de llegar aquí. Sin relleno, sin hype.", rUpd:"Actualizado cada semana por Hermes", rVisit:"Abrir herramienta", rWeek:"Semana del"
   }
 };
-
-const LANGS = ["en","pt","es"];
-const META_DESC = {
-  en:"Master AI avatar creation and discover the best digital opportunities on the market. Método Clone Digital + weekly opportunity radar.",
-  pt:"Domine a criação de avatares com IA e descubra as melhores oportunidades digitais do mercado. Método Clone Digital + radar semanal.",
-  es:"Domina la creación de avatares con IA y descubre las mejores oportunidades digitales del mercado. Método Clone Digital + radar semanal."
-};
-
-function dict(){ return I18N[document.documentElement.lang] || I18N.en; }
-function t(key){ const d = dict(); return d[key] ?? I18N.en[key] ?? key; }
-
-function applyLang(lang){
-  if(!LANGS.includes(lang)) lang = CONFIG.defaultLang;
-  const html = document.documentElement;
-  html.lang = lang;
-  if(html.dataset.lang === lang) { renderRadarIfReady(); return; }
-  html.dataset.lang = lang;
-
-  document.querySelectorAll("[data-t]").forEach(el=>{
-    const v = t(el.dataset.t);
-    if(v !== undefined) el.textContent = v;
+function store(k,v){try{v===undefined?null:localStorage.setItem(k,v);return localStorage.getItem(k)}catch(e){return null}}
+let CUR="en", radarData=null;
+function setLang(l){
+  if(!T[l]) l="en";
+  const d=T[l];
+  document.documentElement.lang=l;
+  document.title=d.title;
+  document.querySelectorAll("[data-i]").forEach(el=>{
+    const v=d[el.dataset.i]; if(v==null) return;
+    if(el.hasAttribute("data-html")) el.innerHTML=v; else el.textContent=v;
   });
-
-  document.querySelectorAll(".lang button").forEach(b=>{
-    b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
-  });
-
-  const md = document.querySelector('meta[name="description"]');
-  if(md) md.setAttribute("content", META_DESC[lang] || META_DESC.en);
-  if(radarData) renderRadar(radarData);
-  try{ localStorage.setItem("askivan_lang", lang); }catch(e){}
+  document.querySelectorAll("[data-i-ph]").forEach(el=>{el.placeholder=d[el.dataset.iPh]});
+  document.querySelectorAll(".langs button").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.lang===l)));
+  document.getElementById("langField").value=l;
+  document.getElementById("nextField").value="https://askivan.co/?joined=1&lang="+l;
+  store("askivan_lang",l);
+  CUR=l; if(radarData) renderRadar(radarData);
 }
-
-function pickLang(){
-  let saved = null;
-  try{ saved = localStorage.getItem("askivan_lang"); }catch(e){}
-  if(saved && LANGS.includes(saved)) return saved;
-  const list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "en"];
-  for(const raw of list){
-    const code = String(raw).toLowerCase().slice(0,2);
-    if(LANGS.includes(code)) return code;
-  }
-  return CONFIG.defaultLang;
+const qs=new URLSearchParams(location.search);
+let lang=qs.get("lang")||store("askivan_lang");
+if(!lang){
+  const list=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||"en"];
+  for(const x of list){const c=String(x).slice(0,2).toLowerCase(); if(T[c]){lang=c;break}}
 }
+setLang(lang||"en");
+document.querySelectorAll(".langs button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+if(qs.get("joined")==="1") document.body.classList.add("is-joined");
+document.getElementById("yr").textContent=new Date().getFullYear();
 
-/* ============================================================
-   RADAR — reads radar.json (updated by Hermes via commit).
-   Falls back to a seed list so the section is never empty.
-   ============================================================ */
-const RADAR_FALLBACK = {
-  updated:"", items:[
-    { tag:"Avatar video", title:"HeyGen", desc:"Talking avatars and precise lip-sync from a single recording. The fastest way to see yourself on screen in another language.", url:"https://www.heygen.com" },
-    { tag:"Music / voice", title:"Suno", desc:"Full songs from a text prompt, including a cloned vocal persona. Useful for intros, jingles and branded audio.", url:"https://suno.com" },
-    { tag:"Video generation", title:"Kling AI", desc:"Short cinematic clips with strong physics and camera control. Good for B-roll when you have no footage.", url:"https://klingai.com" }
-  ]
-};
-let radarData = null;
-
-function esc(s){ return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
-const APP_SUBDOMAINS = /^(app|apps|studio|dashboard|console|platform|my|account|accounts|login|auth|creator|admin)\./i;
-function safeUrl(u){
-  // Radar links always point to the tool's PUBLIC home page: no paths, IDs, projects or logged-in app URLs.
-  try{
-    const p = new URL(String(u), location.href);
-    if(p.protocol !== "http:" && p.protocol !== "https:") return "#";
-    return "https://" + p.hostname.replace(APP_SUBDOMAINS, "") + "/";
-  }catch(e){ return "#"; }
-}
-
+/* radar: reads radar.json; hidden silently if it fails */
+function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+function okUrl(u){try{const p=new URL(String(u),location.href);return (p.protocol==="https:"||p.protocol==="http:")?p.href:"#"}catch(e){return "#"}}
 function renderRadar(data){
-  const grid = document.getElementById("radarGrid");
-  if(!grid) return;
-  const items = (data && Array.isArray(data.items) ? data.items : []).slice(0,3);
-  if(!items.length){ renderRadar(RADAR_FALLBACK); return; }
-  radarData = data;
-  grid.innerHTML = items.map((it,i)=>`
-    <a class="card" href="${esc(safeUrl(it.url))}" target="_blank" rel="noopener noreferrer nofollow" style="animation-delay:${i*60}ms">
-      <div class="card-top">
-        <span class="tag">${esc(it.tag || "Tool")}</span>
-        <span class="rank">#${i+1}</span>
-      </div>
-      <h3>${esc(it.title || "")}</h3>
-      <p>${esc(it.desc || "")}</p>
-      <span class="card-link">${esc(t("radar.visit"))}
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
-      </span>
-    </a>`).join("");
-
-  const meta = document.querySelector(".radar-meta span:last-child");
-  if(meta && data.updated){
-    meta.textContent = t("radar.week") + " " + data.updated;
-  } else if(meta){
-    meta.textContent = t("radar.updated");
-  }
+  const sec=document.getElementById("radar"),grid=document.getElementById("radarGrid");
+  const items=(data&&Array.isArray(data.items)?data.items:[]).slice(0,3);
+  if(!items.length){sec.classList.remove("is-on");return}
+  const d=T[CUR]||T.en;
+  grid.replaceChildren();
+  items.forEach(it=>{
+    const a=el("a","rcard");a.href=okUrl(it.url);a.target="_blank";a.rel="noopener";
+    a.append(el("span","rtag",it.tag||"Tool"),el("h3",null,it.title||""),el("p",null,it.desc||""),el("span","rlink",d.rVisit+" \u2197"));
+    grid.append(a);
+  });
+  document.getElementById("radarMeta").textContent=data.updated?d.rWeek+" "+data.updated:d.rUpd;
+  sec.classList.add("is-on");
 }
-function renderRadarIfReady(){ if(radarData) renderRadar(radarData); }
+fetch("radar.json",{cache:"no-store"}).then(r=>r.ok?r.json():Promise.reject()).then(d=>{radarData=d;renderRadar(d)}).catch(()=>{});
 
-function loadRadar(){
-  renderRadar(RADAR_FALLBACK);              // instant paint, never empty
-  fetch(CONFIG.radarPath, {cache:"no-store"})
-    .then(r => r.ok ? r.json() : Promise.reject())
-    .then(d => renderRadar(d))
-    .catch(()=>{ /* keep seed list */ });
-}
-
-/* ============================================================
-   HERO VIDEO
-   ============================================================ */
-function mountHeroVideo(){
-  const src = (CONFIG.heroVideo || "").trim();
-  if(!src) return;
-  const slot = document.getElementById("heroVideoSlot");
-  if(!slot) return;
-  const yt = src.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
-  const ph = slot.querySelector(".video-ph");
-  const badge = slot.querySelector(".video-badge");
-  if(ph) ph.remove();
-  if(badge) badge.remove();
-  if(yt){
-    const f = document.createElement("iframe");
-    f.src = "https://www.youtube-nocookie.com/embed/" + yt[1] + "?rel=0&playsinline=1";
-    f.title = "AskIvan avatar";
-    f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-    f.allowFullscreen = true;
-    f.loading = "lazy";
-    slot.appendChild(f);
-  } else {
-    slot.classList.add("has-video");
-    const v = document.createElement("video");
-    v.src = src;
-    v.controls = false;            // native controls appear on first play (keeps the poster clean)
-    v.playsInline = true;
-    v.preload = "metadata";
-    v.setAttribute("playsinline","");
-    v.setAttribute("aria-label","AskIvan — AI avatar");
-    const poster = CONFIG.heroPoster || slot.dataset.poster;
-    if(poster) v.poster = poster;
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "video-play";
-    btn.innerHTML = '<span class="video-play-pill"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="currentColor" opacity=".14"/><path d="M9.5 7.6v8.8L16.8 12z" fill="currentColor"/></svg><span data-t="hero.watch">' + esc(t("hero.watch")) + '</span></span>';
-    btn.addEventListener("click", ()=>{
-      v.muted = false;
-      v.volume = 1;
-      const p = v.play();
-      if(p && p.catch) p.catch(()=>{});
-    });
-    v.addEventListener("play", ()=>{ v.controls = true; slot.classList.add("playing"); });
-    v.addEventListener("ended", ()=> slot.classList.remove("playing"));
-    slot.appendChild(v);
-    slot.appendChild(btn);
-  }
-}
-
-/* ============================================================
-   WIRE UP
-   ============================================================ */
-document.querySelectorAll(".lang button").forEach(b=>{
-  b.addEventListener("click", ()=> applyLang(b.dataset.lang));
+/* video */
+const vid=document.getElementById("vid"),card=document.getElementById("card");
+document.getElementById("playBtn").addEventListener("click",()=>{
+  vid.muted=false;vid.controls=true;vid.play().catch(()=>{});card.classList.add("playing");
 });
 
-function openExternal(url){
-  // new tab, no opener/referrer leak, never a WhatsApp fallback
-  const a = document.createElement("a");
-  a.href = url; a.target = "_blank"; a.rel = "noopener noreferrer";
-  document.body.appendChild(a); a.click(); a.remove();
+/* 3D tilt toward cursor (desktop only) */
+if(matchMedia("(hover:hover) and (min-width:881px)").matches && !matchMedia("(prefers-reduced-motion:reduce)").matches){
+  window.addEventListener("mousemove",e=>{
+    if(card.classList.contains("playing")) return;
+    const x=e.clientX/innerWidth-.5, y=e.clientY/innerHeight-.5;
+    card.style.transform=`rotateY(${-9+x*14}deg) rotateX(${4-y*10}deg)`;
+    card.style.setProperty("--gx",(50+x*60)+"%");
+    card.style.setProperty("--gy",(y*60)+"%");
+  });
 }
-document.getElementById("buyBtn").addEventListener("click", ()=>{
-  if(CONFIG.checkoutUrl) openExternal(CONFIG.checkoutUrl);
-});
-document.getElementById("affBtn").addEventListener("click", ()=>{
-  if(CONFIG.affiliateUrl) openExternal(CONFIG.affiliateUrl);
-});
-
-
-/* reveal on scroll */
-if("IntersectionObserver" in window){
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
-  }, {rootMargin:"0px 0px -8% 0px", threshold:.08});
-  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
-  /* safety net: never leave content hidden, whatever the observer does */
-  setTimeout(()=>document.querySelectorAll(".reveal:not(.in)").forEach(el=>el.classList.add("in")), 1800);
-} else {
-  document.querySelectorAll(".reveal").forEach(el=>el.classList.add("in"));
-}
-
-/* boot */
-applyLang(pickLang());
-mountHeroVideo();
-loadRadar();
+vid.addEventListener("play",()=>{card.style.transform="none"});
 </script>
 </body>
 </html>
